@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor de Área - Edúcate</title>
+    <!-- Tus estilos y fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <!-- CSS Adicional para la Cabecera del Visor -->
+    <style>
+        .area-header {
+            color: white;
+            padding: 40px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .area-header h1 { margin: 0; font-size: 3rem; text-transform: uppercase; }
+        .area-header p { font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 10px auto 0; }
+        
+        #app-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-back {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera Dinámica -->
+    <header class="area-header">
+        <a href="index.html" class="nav-back">← Volver al Menú</a>
+        <h1 id="area-title">Cargando...</h1>
+        <p id="area-desc">...</p>
+    </header>
+
+    <!-- Aquí se inyectarán las tarjetas -->
+    <main id="app-container">
+        <!-- El JS llenará esto -->
+    </main>
+
+    <!-- El Cerebro -->
+    <script src="assets/js/app.js"></script>
+
+</body>
+</html>
