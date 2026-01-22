@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "area_id": "ciencias_naturales",
+    "titulo": "Ciencias Naturales",
+    "color_primario": "#54BBAB",
+    "color_secundario": "#17334B",
+    "descripcion": "Evalúa la capacidad de comprender y usar nociones, conceptos y teorías de las ciencias en la solución de problemas, así como la habilidad de indagación.",
+    "peso_global": "X% del Examen"
+  },
+  "competencias": [
+    {
+      "id": "cn_c1",
+      "nombre": "Explicación de Fenómenos",
+      "porcentaje": "30%",
+      "definicion": "Capacidad de construir explicaciones y comprender argumentos y modelos que den razón de fenómenos naturales.",
+      "afirmaciones": [
+        {
+          "id": "af_2",
+          "texto": "Explica cómo ocurren algunos fenómenos de la naturaleza basado en observaciones, patrones y conceptos propios del conocimiento científico.",
+          "evidencias": [
+            {
+              "id": "ev_2.2",
+              "componente_tematico": "QUÍMICO",
+              "texto_icfes": "Reconoce las razones por las cuales la materia se puede diferenciar, según su estructura y propiedades, y justifica las diferencias existentes entre distintos elementos, compuestos y mezclas.",
+              "estrategia_didactica": {
+                "nombre": "Modelado Corpuscular (La Cocina Molecular)",
+                "objetivo": "Visualizar la diferencia abstracta entre mezcla y compuesto a nivel microscópico para explicar propiedades macroscópicas.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: 'El Reto de la Separación'. Entregar una mezcla de sal, arena y limaduras de hierro. Pedir que las separen físicamente. Luego, mostrar agua y pedir que separe el H del O. ¿Por qué no se puede igual?",
+                  "ESTRUCTURACIÓN: Uso de plastilina o legos de colores. Construir modelos de Elemento (1 color), Compuesto (2 colores unidos químicamente) y Mezcla (2 colores juntos pero no unidos). Explicar enlaces.",
+                  "TRANSFERENCIA: Análisis de etiquetas de productos comerciales (ej. Agua embotellada vs. Agua destilada). Clasificarlos como mezclas o compuestos basándose en su composición."
+                ],
+                "tarea_retadora": "El Detective de Materiales: Dado un 'polvo blanco desconocido' (descripción de propiedades: punto de fusión fijo vs. variable), redactar un informe determinando si es una sustancia pura o una mezcla.",
+                "criterios_evaluacion": [
+                  "Diferenciación conceptual entre enlace químico y mezcla física.",
+                  "Uso de propiedades intensivas (punto de fusión/ebullición) para justificar la clasificación.",
+                  "Representación gráfica correcta a nivel de partículas."
+                ]
+              }
+            },
+            {
+              "id": "ev_2.8",
+              "componente_tematico": "BIOLÓGICO",
+              "texto_icfes": "Analiza aspectos de los ecosistemas y da razón de cómo funcionan, de sus interrelaciones con los factores bióticos y abióticos.",
+              "estrategia_didactica": {
+                "nombre": "Simulador de Colapso Ecosistémico",
+                "objetivo": "Comprender el ecosistema como un sistema interdependiente donde la alteración de una variable (biótica o abiótica) genera efectos en cascada.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Caso 'Lobos de Yellowstone'. Ver video corto sobre cómo reintroducir lobos cambió el curso de los ríos. Pregunta: ¿Cómo un depredador afecta al agua (factor abiótico)?",
+                  "ESTRUCTURACIÓN: Redes Tróficas Interactivas. Usar lana para conectar estudiantes que representan especies. Cortar un hilo (extinción) y ver qué partes de la red caen.",
+                  "TRANSFERENCIA: Estudio de caso local (ej. Invasión de Hipopótamos en el Magdalena). Predecir 3 consecuencias bióticas y 2 abióticas de esta especie invasora."
+                ],
+                "tarea_retadora": "Informe de Impacto Ambiental: Como biólogo, predecir qué pasaría en un humedal si la temperatura promedio sube 2°C (afectando el oxígeno disuelto en agua).",
+                "criterios_evaluacion": [
+                  "Identificación correcta de relaciones intra e interespecíficas.",
+                  "Predicción lógica de efectos en cadena (Cascada trófica).",
+                  "Distinción clara y conexión entre factores bióticos y abióticos."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cn_c2",
+      "nombre": "Uso Comprensivo del Conocimiento Científico",
+      "porcentaje": "30%",
+      "definicion": "Capacidad de comprender y usar nociones, conceptos y teorías de las ciencias naturales en la solución de problemas.",
+      "afirmaciones": [
+        {
+          "id": "af_4",
+          "texto": "Asocia fenómenos naturales con conceptos propios del conocimiento científico.",
+          "evidencias": [
+            {
+              "id": "ev_4.1",
+              "componente_tematico": "FÍSICO",
+              "texto_icfes": "Relaciona los componentes de un circuito en serie y en paralelo con sus respectivos voltajes y corrientes.",
+              "estrategia_didactica": {
+                "nombre": "El Circuito Humano",
+                "objetivo": "Conceptualizar el voltaje como energía por unidad de carga y la corriente como flujo, diferenciando el comportamiento en configuraciones serie/paralelo.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Analogía Hidráulica. Comparar cables con tuberías, voltaje con presión de agua y resistencias con estrechamientos.",
+                  "ESTRUCTURACIÓN: Laboratorio Virtual (PhET). Construir circuitos. Medir qué pasa con el brillo de los bombillos (resistencias) si quito uno en serie vs. en paralelo.",
+                  "TRANSFERENCIA: Solución de problemas domésticos. ¿Por qué si se funde un bombillo de navidad viejos se apagan todos (serie), pero en la casa no (paralelo)? Calcular V e I."
+                ],
+                "tarea_retadora": "El Electricista: Diseñar el plano eléctrico de una habitación donde 2 bombillos prendan con un solo interruptor, pero si uno se funde, el otro siga prendido.",
+                "criterios_evaluacion": [
+                  "Aplicación correcta de la Ley de Ohm.",
+                  "Predicción del comportamiento del voltaje en mallas paralelas (es igual).",
+                  "Predicción del comportamiento de la corriente en nodos (se divide)."
+                ]
+              }
+            },
+            {
+              "id": "ev_4.6",
+              "componente_tematico": "QUÍMICO",
+              "texto_icfes": "Diferencia distintos tipos de reacciones químicas y realiza cálculos teniendo en cuenta la ley de conservación de la masa y carga.",
+              "estrategia_didactica": {
+                "nombre": "Estequiometría de la Receta",
+                "objetivo": "Aplicar la Ley de Conservación de la Materia (Lavoisier) para balancear ecuaciones y predecir productos, entendiendo que nada se crea ni se destruye.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Analogía del Sándwich. Si tengo 10 panes y 2 quesos, ¿cuántos sándwiches puedo hacer? Concepto de Reactivo Límite.",
+                  "ESTRUCTURACIÓN: Método de Tanteo y Algebraico para balancear ecuaciones. Énfasis en que los subíndices no cambian, solo los coeficientes.",
+                  "TRANSFERENCIA: Problema industrial. 'Si queremos producir 50kg de Amoniaco, ¿cuánto Nitrógeno necesitamos exactamente?'. Cálculos gramo a gramo."
+                ],
+                "tarea_retadora": "Auditoría de Laboratorio: Revisar una ecuación química mal balanceada propuesta por el docente y explicar por qué viola la ley de conservación de la masa.",
+                "criterios_evaluacion": [
+                  "Balanceo correcto de átomos en reactivos y productos.",
+                  "Cálculo preciso de masas molares.",
+                  "Identificación correcta del reactivo límite y en exceso."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cn_c3",
+      "nombre": "Indagación",
+      "porcentaje": "40%",
+      "definicion": "Capacidad para comprender que a partir de la investigación científica se construyen explicaciones sobre el mundo natural (Metodología Científica).",
+      "afirmaciones": [
+        {
+          "id": "af_6",
+          "texto": "Comprende que a partir de la investigación científica se construyen explicaciones sobre el mundo natural.",
+          "evidencias": [
+            {
+              "id": "ev_6.1",
+              "componente_tematico": "TRANSVERSAL (CTS)",
+              "texto_icfes": "Analiza qué tipo de pregunta puede ser contestada a partir del contexto de una investigación científica.",
+              "estrategia_didactica": {
+                "nombre": "Cazadores de Mitos (Diseño Experimental)",
+                "objetivo": "Diferenciar entre preguntas investigables (empíricas) y no investigables (opinión/ética), y diseñar experimentos para responder las primeras.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Clasificación de preguntas. ¿'Las plantas sienten dolor?' vs. '¿Las plantas crecen más con luz azul?'. ¿Cuál puedo medir?",
+                  "ESTRUCTURACIÓN: Componentes del Diseño Experimental. Definición de Variable Independiente (Causa), Dependiente (Efecto) y Controladas (Constantes).",
+                  "TRANSFERENCIA: Diseño de un protocolo. Los estudiantes deben proponer un experimento paso a paso para verificar un mito popular (ej. 'La gaseosa disuelve un diente')."
+                ],
+                "tarea_retadora": "El Revisor por Pares: Analizar el diseño experimental de otro grupo y encontrar 'agujeros' metodológicos (ej. falta de grupo control o variables no controladas).",
+                "criterios_evaluacion": [
+                  "Formulación de hipótesis falsables.",
+                  "Identificación y aislamiento correcto de variables.",
+                  "Coherencia entre la pregunta de investigación y el diseño propuesto."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
