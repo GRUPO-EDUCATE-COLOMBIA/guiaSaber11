@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "area_id": "lectura_critica",
+    "titulo": "Lectura Crítica",
+    "color_primario": "#D94D15",
+    "color_secundario": "#521537",
+    "descripcion": "Evalúa las capacidades para entender, interpretar y evaluar textos (Continuos y Discontinuos) de la vida cotidiana y ámbitos académicos.",
+    "peso_global": "X% del Examen (Variable según sesión)"
+  },
+  "competencias": [
+    {
+      "id": "lc_c1",
+      "nombre": "Identificar y entender contenidos locales",
+      "nivel_lectura": "LITERAL",
+      "porcentaje": "25%",
+      "definicion": "Capacidad de comprender el significado de palabras, expresiones y frases que aparecen explícitamente en el texto.",
+      "afirmaciones": [
+        {
+          "id": "af_1",
+          "texto": "Identifica y entiende los contenidos locales que conforman un texto.",
+          "evidencias": [
+            {
+              "id": "ev_1.1",
+              "texto_icfes": "Entiende el significado de los elementos locales que constituyen un texto.",
+              "estrategia_didactica": {
+                "nombre": "Rastreo Léxico Contextual",
+                "objetivo": "Superar la definición de diccionario para identificar el sentido pragmático de una palabra o expresión según el contexto específico del párrafo.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Selección de frases con palabras polisémicas (que tienen varios significados). Ejemplo: 'La *columna* del ejército' vs 'La *columna* del edificio'.",
+                  "ESTRUCTURACIÓN: Técnica de 'Pistas de Contexto'. Enseñar a buscar sinónimos, antónimos o explicaciones incrustadas en las oraciones vecinas a la palabra desconocida.",
+                  "TRANSFERENCIA: Lectura de un ensayo filosófico breve. Los estudiantes deben crear un 'Glosario Situacional' definiendo 5 términos clave, no por lo que dice la RAE, sino por cómo los usa el autor."
+                ],
+                "tarea_retadora": "El Traductor: Reescribir un párrafo complejo sustituyendo las palabras técnicas o cultas por sinónimos coloquiales sin perder ni alterar el sentido original.",
+                "criterios_evaluacion": [
+                  "Precisión en la selección del sinónimo adecuado al contexto.",
+                  "Comprensión de expresiones idiomáticas o regionales.",
+                  "Mantenimiento del sentido original del texto tras la sustitución."
+                ]
+              }
+            },
+            {
+              "id": "ev_1.2",
+              "texto_icfes": "Identifica los eventos narrados de manera explícita en un texto (literario, descriptivo, caricatura o cómic).",
+              "estrategia_didactica": {
+                "nombre": "La Línea de Tiempo Forense",
+                "objetivo": "Organizar cronológica y lógicamente los eventos explícitos de una narración, distinguiendo entre la trama (orden del relato) y la historia (orden cronológico).",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Lectura de un microcuento con saltos temporales (flashbacks). Preguntar: ¿Qué pasó primero en la realidad, no en el texto?",
+                  "ESTRUCTURACIÓN: Uso de organizadores gráficos secuenciales. Identificación de conectores temporales (mientras, después, antes de).",
+                  "TRANSFERENCIA: Análisis de un Cómic o Infografía narrativa. Los estudiantes deben numerar las viñetas o pasos según el orden lógico de los hechos."
+                ],
+                "tarea_retadora": "Reporte Policial: A partir de un cuento literario, redactar un 'Informe de Hechos' frío y cronológico, eliminando toda opinión o adorno literario, listando solo qué pasó, quién lo hizo y dónde.",
+                "criterios_evaluacion": [
+                  "Correcta secuenciación de eventos (Inicio-Nudo-Desenlace).",
+                  "Identificación precisa de personajes y lugares explícitos.",
+                  "Distinción entre hecho fáctico y opinión del narrador."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lc_c2",
+      "nombre": "Comprender la articulación de las partes",
+      "nivel_lectura": "INFERENCIAL",
+      "porcentaje": "42%",
+      "definicion": "Capacidad de comprender cómo se relacionan formal y semánticamente los elementos para dar un sentido global.",
+      "afirmaciones": [
+        {
+          "id": "af_2",
+          "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+          "evidencias": [
+            {
+              "id": "ev_2.1",
+              "texto_icfes": "Comprende la estructura formal de un texto y la función de sus partes.",
+              "estrategia_didactica": {
+                "nombre": "Ingeniería Inversa Textual",
+                "objetivo": "Desmontar el texto para entender el propósito de cada párrafo (introducción, tesis, argumento, contraargumento, conclusión) dentro de la arquitectura global.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Entregar un ensayo cortado en tiras de papel desordenadas. Los estudiantes deben rearmarlo y justificar el orden.",
+                  "ESTRUCTURACIÓN: Etiquetado funcional. Enseñar a marcar al margen: ¿Esto es una premisa? ¿Es un ejemplo? ¿Es una cita de autoridad?",
+                  "TRANSFERENCIA: Lectura de una columna de opinión. El estudiante debe crear un 'Mapa Esquelético' que muestre solo la estructura lógica, ignorando el contenido de relleno."
+                ],
+                "tarea_retadora": "El Arquitecto: Escribir un texto donde falte deliberadamente la 'Conclusión' y pedir a un compañero que la redacte basándose únicamente en la coherencia de los párrafos anteriores.",
+                "criterios_evaluacion": [
+                  "Identificación correcta de la Tesis central.",
+                  "Reconocimiento de la función de los conectores lógicos (adversativos, causales).",
+                  "Capacidad de sintetizar la idea global del texto."
+                ]
+              }
+            },
+            {
+              "id": "ev_2.3",
+              "texto_icfes": "Identifica y caracteriza las diferentes voces o situaciones presentes en un texto.",
+              "estrategia_didactica": {
+                "nombre": "Rastreo Polifónico",
+                "objetivo": "Distinguir entre la voz del autor/narrador y las voces de otros personajes o fuentes citadas, identificando si el autor está de acuerdo o no con ellas.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Lectura de textos periodísticos que usan citas directas e indirectas. Preguntar: ¿Quién dice esto? ¿El periodista o el entrevistado?",
+                  "ESTRUCTURACIÓN: Uso de colores para subrayar voces. Amarillo = Narrador, Verde = Personaje A, Azul = Cita de autoridad.",
+                  "TRANSFERENCIA: Análisis de textos irónicos donde el autor dice algo pero quiere decir lo contrario (distancia enunciativa)."
+                ],
+                "tarea_retadora": "Entrevista Imaginaria: Tomar un ensayo argumentativo y transformarlo en un diálogo teatral entre el Autor y las Fuentes que él cita.",
+                "criterios_evaluacion": [
+                  "Diferenciación clara entre discurso directo e indirecto.",
+                  "Identificación de la postura del autor frente a las voces que cita.",
+                  "Reconocimiento de la ironía o el sarcasmo."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lc_c3",
+      "nombre": "Reflexionar y evaluar el contenido",
+      "nivel_lectura": "CRÍTICO",
+      "porcentaje": "33%",
+      "definicion": "Capacidad de enfrentar el texto críticamente, evaluar la validez de argumentos y derivar implicaciones.",
+      "afirmaciones": [
+        {
+          "id": "af_3",
+          "texto": "Reflexiona a partir de un texto y evalúa su contenido.",
+          "evidencias": [
+            {
+              "id": "ev_3.1",
+              "texto_icfes": "Establece la validez e implicaciones de un enunciado de un texto (argumentativo o expositivo).",
+              "estrategia_didactica": {
+                "nombre": "Autopsia de Argumentos",
+                "objetivo": "Evaluar la solidez de una postura, identificando falacias lógicas, generalizaciones indebidas o premisas débiles.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Presentación de publicidad engañosa o discursos políticos populistas. Detección de falacias (Ad Hominem, Hombre de Paja).",
+                  "ESTRUCTURACIÓN: Matriz de Validez. Columna 1: Argumento. Columna 2: Evidencia que lo soporta. Columna 3: ¿Es suficiente/verificable?",
+                  "TRANSFERENCIA: Lectura de dos columnas de opinión opuestas sobre un mismo tema. El estudiante debe juzgar cuál está mejor argumentada, independientemente de su opinión personal."
+                ],
+                "tarea_retadora": "El Verificador: Tomar una premisa del texto y llevarla al extremo ('Reductio ad absurdum') para probar si se sostiene o colapsa.",
+                "criterios_evaluacion": [
+                  "Identificación de falacias argumentativas.",
+                  "Distinción entre un argumento sólido y una opinión sin sustento.",
+                  "Capacidad de inferir consecuencias ideológicas o prácticas del texto."
+                ]
+              }
+            },
+            {
+              "id": "ev_3.3",
+              "texto_icfes": "Reconoce contenidos valorativos presentes en un texto.",
+              "estrategia_didactica": {
+                "nombre": "El Detector de Sesgos",
+                "objetivo": "Identificar la ideología, prejuicios o cosmovisión que subyace en el texto, analizando el uso de adjetivos y la selección de información.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Comparar dos noticias sobre el mismo hecho (una de un medio conservador, otra de uno liberal). Analizar los adjetivos usados en cada una.",
+                  "ESTRUCTURACIÓN: Análisis de la carga connotativa de las palabras (ej. 'terrorista' vs 'rebelde', 'gasto' vs 'inversión').",
+                  "TRANSFERENCIA: El estudiante lee un texto aparentemente 'neutral' y debe redactar un perfil del autor (¿Qué le gusta? ¿Qué odia? ¿A qué grupo pertenece?) basado solo en lo escrito."
+                ],
+                "tarea_retadora": "Reescritura Ideológica: Tomar un texto y reescribirlo cambiando el sesgo (de positivo a negativo o viceversa) modificando solo adjetivos y adverbios.",
+                "criterios_evaluacion": [
+                  "Identificación de la intención comunicativa oculta.",
+                  "Reconocimiento de estereotipos y prejuicios.",
+                  "Análisis del tono del autor."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
