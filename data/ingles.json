@@ -1,0 +1,250 @@
+{
+  "meta": {
+    "area_id": "ingles",
+    "titulo": "Inglés",
+    "color_primario": "#B01829",
+    "color_secundario": "#521537",
+    "descripcion": "Evalúa la competencia comunicativa en lectura y uso del lenguaje alineada con el Marco Común Europeo (Niveles A1, A2, B1, B+).",
+    "peso_global": "X% del Examen"
+  },
+  "competencias": [
+    {
+      "id": "ing_part1",
+      "nombre": "PARTE 1: Conocimiento Lexical",
+      "nivel_mcer": "A1 (Principiante)",
+      "porcentaje": "11%",
+      "definicion": "El estudiante debe comprender descripciones sencillas y relacionarlas con una lista de palabras (Vocabulario).",
+      "afirmaciones": [
+        {
+          "id": "af_p1",
+          "texto": "Comprende descripciones de objetos, lugares o personas y las asocia con su nombre exacto.",
+          "evidencias": [
+            {
+              "id": "ev_p1",
+              "texto_icfes": "Tarea: Relacionar 5 descripciones con una lista de 8 palabras (sustantivos) clasificadas por categorías semánticas (ej. Ropa, Comida, Profesiones).",
+              "estrategia_didactica": {
+                "nombre": "Keyword Association (Asociación de Palabras Clave)",
+                "objetivo": "Desarrollar la habilidad de escanear definiciones buscando 'palabras gatillo' (Trigger Words) que conectan directamente con el sustantivo, sin necesidad de traducir toda la oración.",
+                "fases_metodologicas": [
+                  "EXPLORATION (Modelado): El docente muestra una definición: 'You use this to clean your teeth'. Subraya el verbo 'Clean' y el objeto 'Teeth'. La respuesta obvia es 'Toothbrush'.",
+                  "STRUCTURING (Práctica Guiada): Categorización Semántica. Entregar listas de palabras mezcladas. Los estudiantes deben agruparlas (Fruit, Transport, Clothes) y escribir 2 características clave para cada una.",
+                  "TRANSFER (Práctica Autónoma): Juego de 'Who am I?'. Un estudiante lee 3 palabras clave (ej. 'Yellow', 'Fruit', 'Monkey'). El otro debe adivinar la palabra ('Banana') inmediatamente."
+                ],
+                "tarea_retadora": "The Dictionary Writer: Escribir definiciones simples para 5 objetos del salón sin usar el nombre del objeto, para que un compañero las resuelva.",
+                "criterios_evaluacion": [
+                  "Identificación rápida de palabras clave en la definición.",
+                  "Asociación correcta dentro del mismo campo semántico.",
+                  "Descarte de distractores (palabras que sobran)."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ing_part2",
+      "nombre": "PARTE 2: Pragmática (Avisos)",
+      "nivel_mcer": "A1 (Principiante)",
+      "porcentaje": "11%",
+      "definicion": "El estudiante debe reconocer el propósito comunicativo de un aviso y el lugar donde este aparecería.",
+      "afirmaciones": [
+        {
+          "id": "af_p2",
+          "texto": "Identifica el contexto y lugar de circulación de un mensaje corto (Aviso informativo o preventivo).",
+          "evidencias": [
+            {
+              "id": "ev_p2",
+              "texto_icfes": "Tarea: Leer un aviso (ej. 'Do not swim here') y decidir dónde se encontraría (A: In a pool, B: In a bank, C: In a library).",
+              "estrategia_didactica": {
+                "nombre": "Context Detectives (Detectives de Contexto)",
+                "objetivo": "Inferir el contexto espacial (Location) a partir de la instrucción o prohibición contenida en el aviso.",
+                "fases_metodologicas": [
+                  "EXPLORATION: Mostrar fotos de señales reales de tránsito o lugares públicos en inglés. Preguntar: ¿Dónde estamos si vemos esto?",
+                  "STRUCTURING: Análisis de verbos modales y de imperativo. 'Don't touch' (Museo), 'Be quiet' (Biblioteca), 'Menu' (Restaurante). Crear mapa mental Lugar -> Frases típicas.",
+                  "TRANSFER: Paseo virtual. Mostrar imágenes de lugares (Hospital, Cine, Parque) y pedir a los estudiantes que diseñen 3 avisos lógicos para ese lugar."
+                ],
+                "tarea_retadora": "Sign Hunter: Traer una foto de un aviso en inglés encontrado en una camiseta, videojuego o película y explicar su contexto.",
+                "criterios_evaluacion": [
+                  "Asociación lógica entre la acción prohibida/permitida y el lugar.",
+                  "Comprensión de vocabulario de lugares públicos.",
+                  "Deducción por eliminación de opciones ilógicas."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ing_part3",
+      "nombre": "PARTE 3: Conocimiento Comunicativo",
+      "nivel_mcer": "A1/A2 (Básico)",
+      "porcentaje": "11%",
+      "definicion": "El estudiante debe completar conversaciones cortas seleccionando la respuesta más adecuada a una situación comunicativa.",
+      "afirmaciones": [
+        {
+          "id": "af_p3",
+          "texto": "Completa conversaciones cortas manteniendo la coherencia pragmática y la cortesía.",
+          "evidencias": [
+            {
+              "id": "ev_p3",
+              "texto_icfes": "Tarea: Elegir la intervención adecuada de un interlocutor frente a lo dicho por otro (Interacción social).",
+              "estrategia_didactica": {
+                "nombre": "Functional Adjacency Pairs (Pares de Adyacencia)",
+                "objetivo": "Reconocer patrones de pregunta-respuesta y funciones comunicativas (saludar, disculparse, invitar) más allá de la traducción literal.",
+                "fases_metodologicas": [
+                  "EXPLORATION: Analizar errores comunes. Si alguien dice 'How do you do?', no se responde 'Fine', se responde 'How do you do'. Diferencia entre 'How are you?' y 'What do you do?'.",
+                  "STRUCTURING: Role-play de micro-situaciones. Situación A: Pedir prestado un lápiz. Situación B: Invitar a cine y rechazar educadamente.",
+                  "TRANSFER: Matching Game. Tarjetas con preguntas en un lado y respuestas en otro. Los estudiantes deben encontrar su pareja lógica en el menor tiempo posible."
+                ],
+                "tarea_retadora": "The Chatbot: Escribir las respuestas automáticas para un chat de servicio al cliente frente a quejas o saludos comunes.",
+                "criterios_evaluacion": [
+                  "Selección de la respuesta gramatical y pragmáticamente correcta.",
+                  "Identificación del tono (formal vs. informal).",
+                  "Reconocimiento de 'False Friends' en las opciones de respuesta."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ing_part4",
+      "nombre": "PARTE 4: Conocimiento Gramatical (Cloze I)",
+      "nivel_mcer": "A2 (Básico)",
+      "porcentaje": "18%",
+      "definicion": "El estudiante debe completar un texto sencillo seleccionando la palabra gramaticalmente correcta para cada espacio.",
+      "afirmaciones": [
+        {
+          "id": "af_p4",
+          "texto": "Demuestra control de estructuras gramaticales básicas (tiempos verbales, preposiciones, comparativos) en contexto.",
+          "evidencias": [
+            {
+              "id": "ev_p4",
+              "texto_icfes": "Tarea: Texto con espacios en blanco. Para cada espacio hay 3 opciones que suelen ser variantes gramaticales (ej. go / goes / going).",
+              "estrategia_didactica": {
+                "nombre": "Grammar Surgery (Cirugía Gramatical)",
+                "objetivo": "Analizar la estructura sintáctica de la oración (Sujeto-Verbo-Predicado) para determinar qué pieza falta (Categoría Gramatical).",
+                "fases_metodologicas": [
+                  "EXPLORATION: 'Mirar a la izquierda y a la derecha'. Enseñar a mirar qué palabra está antes y después del espacio. Si antes hay un 'than', necesito un comparativo. Si hay un 'yesterday', necesito pasado.",
+                  "STRUCTURING: Categorías gramaticales. Colorear textos: Verbos en rojo, Preposiciones en azul, Auxiliares en verde.",
+                  "TRANSFER: Texto mutilado. Entregar un texto al que se le han borrado los verbos auxiliares. El estudiante debe deducir cuáles faltan basándose en el sujeto."
+                ],
+                "tarea_retadora": "The Grammar Editor: Corregir un texto lleno de errores de conjugación (tercera persona, pasados irregulares) explicándo la regla violada.",
+                "criterios_evaluacion": [
+                  "Concordancia Sujeto-Verbo.",
+                  "Uso correcto de tiempos verbales según marcadores temporales.",
+                  "Distinción entre adjetivos comparativos y superlativos."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ing_part5",
+      "nombre": "PARTE 5: Comprensión Literal",
+      "nivel_mcer": "B1 (Pre-Intermedio)",
+      "porcentaje": "16%",
+      "definicion": "El estudiante debe comprender la información explícita de un texto de mediana complejidad.",
+      "afirmaciones": [
+        {
+          "id": "af_p5",
+          "texto": "Realiza una lectura literal parafraseada, identificando información específica en el texto.",
+          "evidencias": [
+            {
+              "id": "ev_p5",
+              "texto_icfes": "Tarea: Responder preguntas de selección múltiple basadas en un texto. La respuesta no usa las mismas palabras del texto, sino sinónimos (Paráfrasis).",
+              "estrategia_didactica": {
+                "nombre": "Synonym Hunting (Caza de Sinónimos)",
+                "objetivo": "Entender que la respuesta correcta suele ser una paráfrasis (decir lo mismo con otras palabras) de la oración original.",
+                "fases_metodologicas": [
+                  "EXPLORATION: 'No busques la palabra idéntica'. Mostrar cómo el ICFES cambia 'The car is fast' en el texto por 'The vehicle has high speed' en la pregunta.",
+                  "STRUCTURING: Scanning Technique. Enseñar a buscar nombres propios y fechas rápidamente para ubicar el párrafo donde está la respuesta.",
+                  "TRANSFER: Rewriting. Los estudiantes leen un párrafo y deben escribir 3 preguntas sobre él, pero las respuestas deben usar sinónimos del texto original."
+                ],
+                "tarea_retadora": "The Paraphraser: Reescribir un párrafo corto cambiando todos los verbos y adjetivos por sinónimos sin alterar el significado.",
+                "criterios_evaluacion": [
+                  "Identificación de información explícita parafraseada.",
+                  "Uso eficiente de técnicas de escaneo visual (Scanning).",
+                  "Comprensión de detalles específicos."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ing_part6",
+      "nombre": "PARTE 6: Lectura Inferencial",
+      "nivel_mcer": "B1 (Intermedio)",
+      "porcentaje": "11%",
+      "definicion": "El estudiante debe inferir la intención del autor, el tono o ideas no explícitas en el texto.",
+      "afirmaciones": [
+        {
+          "id": "af_p6",
+          "texto": "Infiere información implícita, actitudes o intenciones a partir del texto global.",
+          "evidencias": [
+            {
+              "id": "ev_p6",
+              "texto_icfes": "Tarea: Preguntas sobre '¿Cuál es la intención del autor?', '¿Qué título le pondrías al texto?' o conclusiones generales.",
+              "estrategia_didactica": {
+                "nombre": "Reading Between the Lines (Leer entre líneas)",
+                "objetivo": "Deducir el mensaje subyacente, el tono (triste, feliz, crítico) y la intención (informar, persuadir, entretener).",
+                "fases_metodologicas": [
+                  "EXPLORATION: Análisis de títulos. Leer un texto sin título y proponer 3 opciones. Discutir cuál captura mejor la 'Idea Principal'.",
+                  "STRUCTURING: Pistas de Tono. Buscar adjetivos positivos vs. negativos para determinar si el autor ama u odia el tema del que habla.",
+                  "TRANSFER: Finales alternativos. Leer una historia hasta la mitad y predecir el final basándose en el tono y las pistas lógicas dejadas por el autor."
+                ],
+                "tarea_retadora": "Author's Profiler: Leer un texto de opinión y crear el perfil del autor (¿Es optimista? ¿Es científico? ¿Es un crítico?) justificándolo con frases del texto.",
+                "criterios_evaluacion": [
+                  "Identificación de la idea principal global.",
+                  "Inferencia de la intención comunicativa (Purpose).",
+                  "Deducción de conclusiones lógicas."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ing_part7",
+      "nombre": "PARTE 7: Gramática y Léxico (Cloze II)",
+      "nivel_mcer": "B+ (Intermedio Alto)",
+      "porcentaje": "22%",
+      "definicion": "El estudiante completa un texto avanzado seleccionando la palabra precisa según gramática y significado (Colocaciones).",
+      "afirmaciones": [
+        {
+          "id": "af_p7",
+          "texto": "Demuestra un dominio léxico-gramatical avanzado, manejando colocaciones y vocabulario preciso en contexto.",
+          "evidencias": [
+            {
+              "id": "ev_p7",
+              "texto_icfes": "Tarea: Texto con espacios donde las opciones son palabras con significado similar (ej. Look / Watch / See) o conectores complejos.",
+              "estrategia_didactica": {
+                "nombre": "Collocation Master (Maestro de Colocaciones)",
+                "objetivo": "Diferenciar entre palabras que parecen sinónimos pero se usan en contextos distintos (ej. 'Do homework' vs 'Make a mistake').",
+                "fases_metodologicas": [
+                  "EXPLORATION: Análisis de error. ¿Por qué 'Say a joke' está mal y 'Tell a joke' está bien? Concepto de Colocación (palabras que van juntas por costumbre).",
+                  "STRUCTURING: Familias de palabras. Verbos que van con preposiciones fijas (Interested IN, Good AT, Afraid OF).",
+                  "TRANSFER: Texto Avanzado. Completar un texto científico o literario donde las opciones son muy sutiles, debatiendo el matiz de significado."
+                ],
+                "tarea_retadora": "The Translator's Challenge: Explicar en español la diferencia exacta entre las 4 opciones de respuesta de una pregunta difícil de la Parte 7.",
+                "criterios_evaluacion": [
+                  "Uso correcto de Colocaciones (Collocations).",
+                  "Dominio de Phrasal Verbs.",
+                  "Precisión semántica en vocabulario avanzado."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
