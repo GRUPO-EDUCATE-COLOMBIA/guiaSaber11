@@ -131,7 +131,7 @@
                 "fases_metodologicas": [
                   "EXPLORACIÓN: Se presenta una afirmación polémica sobre un conjunto de datos (ej. 'La empresa X tuvo pérdidas').",
                   "ESTRUCTURACIÓN: Estructura del argumento matemático (Premisa -> Evidencia Numérica -> Conclusión). Uso de contraejemplos.",
-                  "TRANSFERENCIA: Debate en clase. Grupo A defiende la afirmación, Grupo B la refuta, usando los mismos datos.",
+                  "TRANSFERENCIA: Debate en clase. Grupo A defiende la afirmación, Grupo B la refuta, usando los mismos datos."
                 ],
                 "tarea_retadora": "El Abogado del Diablo: Escribir un párrafo refutando una conclusión que parece obvia, utilizando un contraejemplo matemático encontrado en los datos.",
                 "criterios_evaluacion": [
