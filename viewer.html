@@ -3,56 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visor de Área - Edúcate</title>
-    <!-- Tus estilos y fuentes -->
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Visor de Módulos - Saber 11º</title>
     
-    <!-- CSS Adicional para la Cabecera del Visor -->
+    <!-- FUENTE: Barlow Condensed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CONEXIÓN CON TU HOJA DE ESTILOS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
     <style>
+        /* ESTILOS ESPECÍFICOS PARA EL VISOR (Layout) */
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* CABECERA DINÁMICA (Cambia de color según el área) */
         .area-header {
+            background-color: #333; /* Color por defecto, JS lo cambia */
             color: white;
-            padding: 40px;
-            margin-bottom: 40px;
+            padding: 3rem 2rem;
             text-align: center;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: background-color 0.5s ease;
         }
-        .area-header h1 { margin: 0; font-size: 3rem; text-transform: uppercase; }
-        .area-header p { font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 10px auto 0; }
-        
-        #app-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
+
+        /* BOTÓN VOLVER */
         .nav-back {
             position: absolute;
             top: 20px;
             left: 20px;
-            color: white;
+            color: rgba(255,255,255,0.8);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1.1rem;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+            padding: 8px 16px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-back:hover {
+            background: white;
+            color: #333;
+        }
+
+        /* TÍTULOS DEL ÁREA */
+        #area-title {
+            font-size: 3.5rem;
+            margin: 10px 0 0 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        #area-desc {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 15px auto 0;
+            font-weight: 400;
+        }
+
+        /* CONTENEDOR PRINCIPAL DE TARJETAS */
+        #app-container {
+            max-width: 1100px;
+            margin: -40px auto 40px; /* Margen negativo para solapar con el header */
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 10;
+        }
+
+        /* SEPARADORES DE COMPETENCIA */
+        .competency-section {
+            margin-bottom: 60px;
+        }
+        
+        .competency-def {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #ccc;
+            font-size: 1.1rem;
+            color: #555;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* ESTADO DE CARGA */
+        .loading-state {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.5rem;
+            color: #666;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            #area-title { font-size: 2.5rem; }
+            .area-header { padding: 4rem 1rem 2rem; } /* Más espacio arriba para el botón */
+            .nav-back { top: 15px; left: 15px; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Cabecera Dinámica -->
+    <!-- 1. CABECERA (El JS cambiará el color y texto aquí) -->
     <header class="area-header">
-        <a href="index.html" class="nav-back">← Volver al Menú</a>
-        <h1 id="area-title">Cargando...</h1>
-        <p id="area-desc">...</p>
+        <a href="index.html" class="nav-back">
+            <!-- Icono Flecha -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Volver al Tablero
+        </a>
+        
+        <h1 id="area-title">Cargando Módulo...</h1>
+        <p id="area-desc">Por favor espere mientras preparamos los contenidos pedagógicos.</p>
     </header>
 
-    <!-- Aquí se inyectarán las tarjetas -->
+    <!-- 2. CONTENEDOR (Aquí se inyectan las tarjetas automáticamente) -->
     <main id="app-container">
-        <!-- El JS llenará esto -->
+        <div class="loading-state">Inicializando componentes...</div>
     </main>
 
-    <!-- El Cerebro -->
+    <!-- 3. EL CEREBRO (Script que conecta JSON con HTML) -->
     <script src="assets/js/app.js"></script>
 
 </body>
