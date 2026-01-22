@@ -1,0 +1,149 @@
+{
+  "meta": {
+    "area_id": "sociales",
+    "titulo": "Sociales y Ciudadanas",
+    "color_primario": "#F39325",
+    "color_secundario": "#D94D15",
+    "descripcion": "Evalúa la capacidad de comprender el mundo social, analizar eventos, argumentos y posturas desde la Constitución, el multiperspectivismo y el pensamiento sistémico.",
+    "peso_global": "X% del Examen"
+  },
+  "competencias": [
+    {
+      "id": "soc_c1",
+      "nombre": "Pensamiento Social",
+      "porcentaje": "30%",
+      "definicion": "Capacidad para usar conceptos básicos de ciencias sociales y conocer los principios constitucionales.",
+      "afirmaciones": [
+        {
+          "id": "af_1",
+          "texto": "Comprende modelos conceptuales, sus características y contextos de aplicación (Constitución y Conceptos Básicos).",
+          "evidencias": [
+            {
+              "id": "ev_1.1",
+              "texto_icfes": "Identifica y usa conceptos sociales básicos (económicos, políticos, culturales y geográficos) y conoce el modelo de Estado Social de Derecho.",
+              "estrategia_didactica": {
+                "nombre": "La Ruta Constitucional",
+                "objetivo": "Conectar situaciones cotidianas de vulneración con los Derechos Fundamentales y los Mecanismos de Protección (Tutela, Derecho de Petición, Popular).",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Presentación de casos reales 'anónimos' (ej. 'A Juan no le entregaron sus medicamentos'). Pregunta: ¿Qué derecho se viola? ¿Qué harías tú?",
+                  "ESTRUCTURACIÓN: Mapeo de Mecanismos. Crear un diagrama de flujo: Si es derecho fundamental -> Tutela. Si es colectivo -> Acción Popular. Si es petición de info -> Derecho de Petición.",
+                  "TRANSFERENCIA: Simulación de Consultorio Jurídico. Los estudiantes reciben 5 casos nuevos y deben recetar el 'Remedio Constitucional' correcto."
+                ],
+                "tarea_retadora": "El Personero: Redactar el esqueleto de una Acción de Tutela para un caso hipotético de discriminación escolar, citando el artículo constitucional preciso.",
+                "criterios_evaluacion": [
+                  "Selección correcta del mecanismo de participación/protección.",
+                  "Identificación precisa del derecho vulnerado.",
+                  "Comprensión del concepto de Estado Social de Derecho vs. Estado de Derecho."
+                ]
+              }
+            },
+            {
+              "id": "ev_2.1",
+              "texto_icfes": "Localiza en el tiempo y en el espacio eventos históricos y prácticas sociales.",
+              "estrategia_didactica": {
+                "nombre": "Cartografía Histórica Superpuesta",
+                "objetivo": "Entender que los eventos no ocurren en el vacío, relacionando el contexto geográfico con el desarrollo histórico.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Proyección de mapas de Colombia en distintas épocas (ej. Mapa de la Violencia de los 50 vs. Mapa de Cultivos Ilícitos actual).",
+                  "ESTRUCTURACIÓN: Análisis de capas. ¿Cómo la geografía (montañas, ríos) influyó en la economía o el conflicto de esa región?",
+                  "TRANSFERENCIA: Línea de tiempo geo-referenciada. El estudiante ubica un evento histórico y explica por qué ocurrió *allí* y no en otro lado."
+                ],
+                "tarea_retadora": "El Geógrafo Social: Explicar un conflicto actual (ej. Tierras en el Cauca) rastreando sus raíces históricas (La Colonia, La República) y geográficas (relieve, fertilidad).",
+                "criterios_evaluacion": [
+                  "Uso correcto de categorías temporales (periodos, hitos).",
+                  "Relación causal entre espacio geográfico y proceso social.",
+                  "Contextualización adecuada de eventos históricos."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "soc_c2",
+      "nombre": "Interpretación y análisis de perspectivas",
+      "porcentaje": "40%",
+      "definicion": "Habilidad para analizar críticamente información sobre asuntos sociales, reconociendo diversas opiniones, posturas e intereses (Multiperspectivismo).",
+      "afirmaciones": [
+        {
+          "id": "af_4",
+          "texto": "Comprende perspectivas de distintos actores y grupos sociales.",
+          "evidencias": [
+            {
+              "id": "ev_4.1",
+              "texto_icfes": "Reconoce y compara perspectivas de actores y grupos sociales.",
+              "estrategia_didactica": {
+                "nombre": "Mesa de Negociación de Conflictos",
+                "objetivo": "Identificar que detrás de una 'Posición' (lo que se dice) hay un 'Interés' (lo que se necesita) y una 'Cosmovisión' (cómo se ve el mundo).",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Lectura de un caso de conflicto socio-ambiental (ej. Minería en páramo). Identificar actores: Empresa, Campesinos, Gobierno, Ambientalistas.",
+                  "ESTRUCTURACIÓN: Matriz de Actores. Columna 1: Actor. Columna 2: ¿Qué dice? (Discurso). Columna 3: ¿Qué gana/pierde realmente? (Interés económico/social).",
+                  "TRANSFERENCIA: Juego de Roles. Los estudiantes defienden una postura que NO es la suya, obligándolos a entender la lógica del 'otro'."
+                ],
+                "tarea_retadora": "El Mediador Neutral: Escribir un informe de consenso que reconozca la validez de dos posturas opuestas sin tomar partido, buscando puntos de encuentro.",
+                "criterios_evaluacion": [
+                  "Identificación de actores visibles e invisibles.",
+                  "Diferenciación entre ideología, interés económico y necesidad vital.",
+                  "Capacidad de ver el conflicto desde la óptica del otro (empatía cognitiva)."
+                ]
+              }
+            },
+            {
+              "id": "ev_3.3",
+              "texto_icfes": "Devela prejuicios e intenciones en enunciados o argumentos.",
+              "estrategia_didactica": {
+                "nombre": "Arqueología del Discurso",
+                "objetivo": "Evaluar fuentes primarias y secundarias detectando sesgos, prejuicios y valorando la credibilidad de la fuente.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Comparar dos titulares sobre una protesta social. Uno criminalizante, otro victimizante.",
+                  "ESTRUCTURACIÓN: Criterios de Credibilidad. ¿Quién financia al medio? ¿Qué adjetivos usa? ¿Cita fuentes o rumores?",
+                  "TRANSFERENCIA: Análisis de cadenas de WhatsApp o Fake News. Los estudiantes deben rastrear el origen y desmontar el prejuicio implícito."
+                ],
+                "tarea_retadora": "Fact-Checker: Tomar un discurso político viral y señalar frases que contengan estereotipos de género, raza o clase.",
+                "criterios_evaluacion": [
+                  "Detección de sesgos en fuentes de información.",
+                  "Valoración de la pertinencia de una fuente para un tema dado.",
+                  "Identificación de prejuicios discriminatorios."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "soc_c3",
+      "nombre": "Pensamiento reflexivo y sistémico",
+      "porcentaje": "30%",
+      "definicion": "Capacidad para identificar dimensiones (económica, política, ambiental) en una problemática y sus relaciones (Sistema).",
+      "afirmaciones": [
+        {
+          "id": "af_6",
+          "texto": "Comprende que los problemas y sus soluciones involucran distintas dimensiones y reconoce relaciones entre estas.",
+          "evidencias": [
+            {
+              "id": "ev_6.1",
+              "texto_icfes": "Establece relaciones que hay entre dimensiones presentes en una situación problemática.",
+              "estrategia_didactica": {
+                "nombre": "La Telaraña Sistémica",
+                "objetivo": "Superar el análisis lineal (Causa -> Efecto) para entender el análisis sistémico (Múltiples causas, múltiples efectos interconectados).",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Caso problema: 'Prohibición del parrillero en moto'. ¿Es solo un tema de seguridad?",
+                  "ESTRUCTURACIÓN: Diagrama Hexagonal. Ubicar el problema al centro y analizar impactos en 6 ejes: Económico, Político, Ambiental, Cultural, Social, Seguridad.",
+                  "TRANSFERENCIA: Análisis de 'Trade-offs' (Intercambios). Si mejoro la Seguridad (Eje 1), ¿Cómo afecto la Economía del mototaxista (Eje 2)? ¿Qué pasa con el Transporte (Eje 3)?"
+                ],
+                "tarea_retadora": "El Planificador Urbano: Proponer una solución a un problema de ciudad que contemple medidas de mitigación para los efectos negativos colaterales.",
+                "criterios_evaluacion": [
+                  "Identificación de al menos 3 dimensiones en un problema.",
+                  "Reconocimiento de tensiones entre dimensiones (ej. Desarrollo vs. Medio Ambiente).",
+                  "Comprensión de efectos no intencionados de una medida."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
