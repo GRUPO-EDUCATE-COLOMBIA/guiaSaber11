@@ -209,7 +209,21 @@ body {
 .pedagogy-box {
     padding: 1.5rem; /* Más aire interno */
 }
+/* BADGES PARA CIENCIAS NATURALES */
+.badge-component {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 12px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    color: white;
+}
 
+.badge-bio { background-color: #4CAF50; } /* Verde */
+.badge-fis { background-color: #FF9800; } /* Naranja */
+.badge-quim { background-color: #9C27B0; } /* Morado */
+.badge-cts { background-color: #607D8B; } /* Azul Gris */
 .box-header {
     font-size: 1.1rem; /* Subtítulos más claros */
     margin-bottom: 1rem;
