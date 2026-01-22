@@ -1,0 +1,149 @@
+{
+  "meta": {
+    "area_id": "matematicas",
+    "titulo": "Matemáticas",
+    "color_primario": "#11678B",
+    "color_secundario": "#17334B",
+    "descripcion": "Evalúa la capacidad para enfrentar situaciones que pueden resolverse con el uso de herramientas matemáticas (Interpretación, Formulación y Argumentación).",
+    "peso_global": "30% del Examen"
+  },
+  "competencias": [
+    {
+      "id": "mat_c1",
+      "nombre": "Interpretación y Representación",
+      "porcentaje": "34%",
+      "definicion": "Capacidad de comprender y transformar información cuantitativa y esquemática presentada en distintos formatos.",
+      "afirmaciones": [
+        {
+          "id": "af_1",
+          "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+          "evidencias": [
+            {
+              "id": "ev_1.1",
+              "texto_icfes": "Da cuenta de las características básicas de la información presentada en diferentes formatos, como series, gráficas, tablas y esquemas.",
+              "estrategia_didactica": {
+                "nombre": "El Auditor de Datos (Fact-Checking Matemático)",
+                "objetivo": "Desarrollar pensamiento crítico frente a la visualización de datos, identificando sesgos o errores estructurales en representaciones gráficas.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: El docente proyecta un gráfico de medios reales con errores de escala (eje truncado) y pregunta: ¿Qué historia cuenta este gráfico? ¿Qué dicen los números realmente?",
+                  "ESTRUCTURACIÓN: Se introducen los 'Criterios de Integridad Gráfica' (escalas proporcionales, etiquetado, fuente). Se analizan ejemplos correctos e incorrectos comparativamente.",
+                  "TRANSFERENCIA: Los estudiantes reciben un set de gráficos variados y deben aplicar una 'Lista de Chequeo' para aprobarlos o rechazarlos como válidos."
+                ],
+                "tarea_retadora": "Rol de Editor: El estudiante recibe un informe con gráficos manipulados y debe redactar un reporte técnico señalando los errores y dibujando la versión corregida.",
+                "criterios_evaluacion": [
+                  "Identifica inconsistencias entre la magnitud visual y el valor numérico.",
+                  "Verifica el inicio y continuidad de los ejes cartesianos.",
+                  "Reconoce si el tipo de gráfico corresponde a la naturaleza de la variable."
+                ]
+              }
+            },
+            {
+              "id": "ev_1.2",
+              "texto_icfes": "Transforma la representación de una o más piezas de información.",
+              "estrategia_didactica": {
+                "nombre": "Traducción Semiótica Intermodal",
+                "objetivo": "Ejecutar conversiones precisas entre diferentes registros de representación (Tabla ↔ Gráfico ↔ Texto) conservando la fidelidad de los datos.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Juego de 'Teléfono Roto Matemático'. Un dato pasa de texto a tabla y de tabla a gráfico entre estudiantes.",
+                  "ESTRUCTURACIÓN: Instrucción explícita sobre reglas de conversión (ej. cálculo de grados para gráficos circulares: 360° * frecuencia relativa).",
+                  "TRANSFERENCIA: Entrega de un texto narrativo denso (ej. reporte económico). El estudiante debe sistematizarlo en una tabla y luego visualizarlo en el gráfico más adecuado."
+                ],
+                "tarea_retadora": "Infografía de Síntesis: Convertir una página de texto continuo con datos dispersos en una sola infografía que combine tablas y gráficos coherentes.",
+                "criterios_evaluacion": [
+                  "Precisión en la extracción de datos del texto fuente.",
+                  "Cálculo correcto de proporciones para la nueva representación.",
+                  "La nueva representación facilita la lectura rápida sin perder información."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mat_c2",
+      "nombre": "Formulación y Ejecución",
+      "porcentaje": "43%",
+      "definicion": "Capacidad de plantear y diseñar estrategias para solucionar problemas provenientes de diversos contextos.",
+      "afirmaciones": [
+        {
+          "id": "af_2",
+          "texto": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+          "evidencias": [
+            {
+              "id": "ev_2.1",
+              "texto_icfes": "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+              "estrategia_didactica": {
+                "nombre": "Arquitectura de Soluciones (Diagramas de Flujo)",
+                "objetivo": "Fomentar la metacognición y la planificación previa al cálculo, separando el diseño de la estrategia de su ejecución mecánica.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Se presenta un problema complejo. Se prohíbe hacer cálculos. Solo se pide: ¿Qué pasos harías para resolverlo?",
+                  "ESTRUCTURACIÓN: Enseñanza del método de Polya. Uso de diagramas de flujo para mapear la ruta de solución (Datos -> Fórmula -> Operación -> Verificación).",
+                  "TRANSFERENCIA: Los estudiantes reciben problemas y deben entregar solo el 'Mapa de Ruta' o algoritmo de solución, sin la respuesta numérica final."
+                ],
+                "tarea_retadora": "El Consultor: Escribir una 'Guía Paso a Paso' para que otro compañero resuelva un tipo específico de problema, sin darle la respuesta.",
+                "criterios_evaluacion": [
+                  "Secuencialidad lógica de los pasos propuestos.",
+                  "Identificación correcta de las variables necesarias vs. irrelevantes.",
+                  "Viabilidad de la estrategia propuesta para el contexto dado."
+                ]
+              }
+            },
+            {
+              "id": "ev_2.2",
+              "texto_icfes": "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+              "estrategia_didactica": {
+                "nombre": "Caza de Errores Procedimentales",
+                "objetivo": "Fortalecer la precisión algorítmica y la capacidad de monitoreo durante la ejecución de operaciones.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Revisión de un ejercicio resuelto que contiene un error común (signo, jerarquía de operaciones).",
+                  "ESTRUCTURACIÓN: Repaso focalizado de aritmética y álgebra operativa. Técnicas de auto-verificación (estimación previa, operación inversa).",
+                  "TRANSFERENCIA: Resolución de problemas bajo presión de tiempo moderada, exigiendo el desglose operativo claro."
+                ],
+                "tarea_retadora": "El Corrector: Intercambiar cuadernos. Corregir el procedimiento de un compañero, identificando dónde ocurrió el error (si lo hubo) y explicándolo con nota al margen.",
+                "criterios_evaluacion": [
+                  "Aplicación correcta de la jerarquía de las operaciones.",
+                  "Manejo adecuado de unidades de medida durante todo el proceso.",
+                  "Consistencia entre el plan diseñado y la ejecución realizada."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mat_c3",
+      "nombre": "Argumentación",
+      "porcentaje": "23%",
+      "definicion": "Capacidad para validar o refutar conclusiones, estrategias y soluciones.",
+      "afirmaciones": [
+        {
+          "id": "af_3",
+          "texto": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+          "evidencias": [
+            {
+              "id": "ev_3.1",
+              "texto_icfes": "Plantea afirmaciones que sustentan o refutan una interpretación dada a la información disponible.",
+              "estrategia_didactica": {
+                "nombre": "Tribunal Matemático",
+                "objetivo": "Construir argumentos lógicos basados en evidencias matemáticas para defender o atacar una tesis.",
+                "fases_metodologicas": [
+                  "EXPLORACIÓN: Se presenta una afirmación polémica sobre un conjunto de datos (ej. 'La empresa X tuvo pérdidas').",
+                  "ESTRUCTURACIÓN: Estructura del argumento matemático (Premisa -> Evidencia Numérica -> Conclusión). Uso de contraejemplos.",
+                  "TRANSFERENCIA: Debate en clase. Grupo A defiende la afirmación, Grupo B la refuta, usando los mismos datos.",
+                ],
+                "tarea_retadora": "El Abogado del Diablo: Escribir un párrafo refutando una conclusión que parece obvia, utilizando un contraejemplo matemático encontrado en los datos.",
+                "criterios_evaluacion": [
+                  "Uso de datos explícitos para soportar la afirmación.",
+                  "Coherencia lógica entre la premisa y la conclusión.",
+                  "Capacidad de identificar la invalidez de un argumento falaz."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
