@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta de Evidencia - Grupo Edúcate</title>
+    <!-- FUENTE: Barlow Condensed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 1. TOKENS DE DISEÑO (Grupo Edúcate) --- */
+        :root {
+            --educate-navy: #17334B;       /* Primario 1 (Textos oscuros) */
+            --educate-blue: #11678B;       /* Primario 2 (Matemáticas) */
+            --educate-teal: #54BBAB;       /* Primario 3 (Objetivos) */
+            --educate-orange: #F39325;     /* Secundario 1 (Fases/Procesos) */
+            --educate-red: #D94D15;        /* Secundario 2 (Criterios/Evaluación) */
+            --educate-dark-red: #B01829;   /* Tarea Retadora */
+            --educate-bg: #F4F6F8;         /* Fondo General */
+            --white: #FFFFFF;
+            
+            /* Tipografía y Escala (Aumentada según solicitud) */
+            --font-main: 'Barlow Condensed', sans-serif;
+            --text-base: 20px;  /* Tamaño base grande para lectura cómoda */
+            --text-h1: 28px;
+            --text-h2: 24px;
+        }
+
+        /* --- 2. ESTILOS GENERALES --- */
+        body {
+            font-family: var(--font-main);
+            font-size: var(--text-base);
+            background-color: #eef1f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* --- 3. COMPONENTE TARJETA (Contenedor) --- */
+        .evidence-card {
+            background: var(--white);
+            max-width: 1000px; /* Ancho amplio para ver bien la grid */
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(23, 51, 75, 0.15);
+            overflow: hidden;
+            border: 1px solid #d1d9e0;
+        }
+
+        /* --- 4. CABECERA CONTEXTUAL (ICFES) --- */
+        .card-header {
+            background-color: var(--educate-blue); /* Color cambia según materia */
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid rgba(0,0,0,0.1);
+        }
+
+        .card-header h2 {
+            margin: 0;
+            font-size: var(--text-h1);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .meta-tag {
+            background: rgba(255,255,255,0.2);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        /* --- 5. CUERPO: EVIDENCIA OFICIAL --- */
+        .icfes-body {
+            padding: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .label-official {
+            display: block;
+            font-size: 0.85em;
+            color: var(--educate-navy);
+            opacity: 0.7;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .text-evidence {
+            font-size: 1.3rem; /* Texto ICFES grande */
+            font-weight: 600;
+            color: #000;
+            margin: 0;
+        }
+
+        /* --- 6. DASHBOARD PEDAGÓGICO (ESTRATEGIA) --- */
+        .strategy-dashboard {
+            background-color: var(--educate-bg);
+            padding: 2rem;
+        }
+
+        /* Título de la Estrategia */
+        .strategy-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .strategy-header svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--educate-orange);
+        }
+
+        .strategy-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--educate-navy);
+            margin: 0;
+        }
+
+        /* --- GRID LAYOUT INTELIGENTE --- */
+        .pedagogy-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr; /* Izquierda más ancha (Fases) */
+            grid-template-rows: auto auto;    /* Filas automáticas */
+            gap: 1.5rem;
+        }
+
+        /* Cajas Pedagógicas */
+        .p-box {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 6px solid #ccc; /* Borde de acento por defecto */
+        }
+
+        .p-box-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            color: var(--educate-navy);
+        }
+
+        .p-box-title svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Estilos Específicos por Caja */
+
+        /* A. Objetivo (Ocupa todo el ancho arriba) */
+        .box-objective {
+            grid-column: 1 / -1; 
+            border-left-color: var(--educate-teal);
+            background-color: #f0fdfa; /* Fondo muy sutil menta */
+        }
+        .box-objective .p-box-title { color: var(--educate-teal); }
+        .box-objective p { margin: 0; font-weight: 500; font-size: 1.1rem; }
+
+        /* B. Fases Metodológicas (Columna Izquierda, Alta) */
+        .box-phases {
+            grid-column: 1 / 2;
+            grid-row: 2 / 4; /* Ocupa altura vertical */
+            border-left-color: var(--educate-blue);
+        }
+        .box-phases .p-box-title { color: var(--educate-blue); }
+
+        /* Lista de Fases con estilo */
+        .phase-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .phase-list li {
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-left: 1rem;
+            border-left: 2px solid #e0e0e0;
+        }
+        .phase-tag {
+            font-weight: 700;
+            color: var(--educate-blue);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* C. Tarea Retadora (Derecha Arriba) */
+        .box-task {
+            border-left-color: var(--educate-dark-red);
+        }
+        .box-task .p-box-title { color: var(--educate-dark-red); }
+
+        /* D. Criterios (Derecha Abajo) */
+        .box-criteria {
+            border-left-color: var(--educate-orange);
+        }
+        .box-criteria .p-box-title { color: var(--educate-orange); }
+        
+        .check-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .check-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 0.8rem;
+        }
+        .check-list li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: var(--educate-orange);
+            font-weight: bold;
+        }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 800px) {
+            .pedagogy-grid {
+                grid-template-columns: 1fr; /* Todo en una columna */
+            }
+            body { padding: 15px; }
+            .card-header h2 { font-size: 1.4rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- COMPONENTE MAESTRO -->
+    <article class="evidence-card">
+        
+        <!-- 1. HEADER (Contexto ICFES) -->
+        <header class="card-header">
+            <div>
+                <span style="font-size: 0.8rem; opacity: 0.9; display:block; margin-bottom:4px;">COMPETENCIA</span>
+                <h2>INTERPRETACIÓN Y REPRESENTACIÓN</h2>
+            </div>
+            <span class="meta-tag">Matemáticas</span>
+        </header>
+
+        <!-- 2. EVIDENCIA OFICIAL -->
+        <div class="icfes-body">
+            <span class="label-official">Evidencia 1.1 (Estándar Saber 11)</span>
+            <p class="text-evidence">
+                Da cuenta de las características básicas de la información presentada en diferentes formatos, como series, gráficas, tablas y esquemas.
+            </p>
+        </div>
+
+        <!-- 3. ESTRATEGIA PEDAGÓGICA -->
+        <section class="strategy-dashboard">
+            
+            <div class="strategy-header">
+                <!-- Icono Foco -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21h6"></path><path d="M12 3a6 6 0 0 1 6 6 4 4 0 0 0 4 4v1a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-1a4 4 0 0 0 4-4 6 6 0 0 1 6-6z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <h3 class="strategy-name">El Auditor de Datos (Fact-Checking)</h3>
+            </div>
+
+            <div class="pedagogy-grid">
+
+                <!-- A. Objetivo -->
+                <div class="p-box box-objective">
+                    <div class="p-box-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        Objetivo Didáctico
+                    </div>
+                    <p>Desarrollar pensamiento crítico frente a la visualización de datos, identificando sesgos intencionales o errores estructurales en medios de comunicación.</p>
+                </div>
+
+                <!-- B. Fases Metodológicas -->
+                <div class="p-box box-phases">
+                    <div class="p-box-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                        Secuencia Didáctica
+                    </div>
+                    <ul class="phase-list">
+                        <li>
+                            <span class="phase-tag">1. EXPLORACIÓN (Modelado)</span>
+                            El docente proyecta un gráfico con el eje Y truncado. Piensa en voz alta: "¿Por qué la barra A se ve el doble de grande que la B si el número es casi igual?".
+                        </li>
+                        <li>
+                            <span class="phase-tag">2. ESTRUCTURACIÓN (Práctica Guiada)</span>
+                            Introducción de la 'Lista de Integridad Gráfica'. Análisis comparativo de gráficos correctos vs. manipulados en pizarra.
+                        </li>
+                        <li>
+                            <span class="phase-tag">3. TRANSFERENCIA (Autonomía)</span>
+                            Los estudiantes auditan un reporte real de prensa aplicando los criterios aprendidos para aprobarlo o rechazarlo.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- C. Tarea Retadora -->
+                <div class="p-box box-task">
+                    <div class="p-box-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                        Tarea Retadora
+                    </div>
+                    <p style="margin:0;"><strong>Rol de Editor:</strong> Recibir un informe con gráficos manipulados y redactar un reporte técnico señalando los errores y dibujando la versión corregida.</p>
+                </div>
+
+                <!-- D. Criterios -->
+                <div class="p-box box-criteria">
+                    <div class="p-box-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        Criterios Evaluación
+                    </div>
+                    <ul class="check-list">
+                        <li>Identifica inconsistencias visuales/numéricas.</li>
+                        <li>Verifica la continuidad de ejes cartesianos.</li>
+                        <li>Argumenta sobre la naturaleza de la variable.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+    </article>
+
+</body>
+</html>
