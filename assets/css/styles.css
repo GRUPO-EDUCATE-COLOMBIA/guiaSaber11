@@ -170,3 +170,55 @@
         grid-template-columns: 1fr; /* Todo en una columna */
     }
 }
+:root {
+    /* ...colores iguales al anterior... */
+    --font-family: 'Barlow Condensed', sans-serif;
+    --base-size: 20px; /* AUMENTADO para mejor lectura */
+}
+
+body {
+    font-size: var(--base-size); /* Aplica tamaño base grande */
+    line-height: 1.6; /* Mayor espaciado entre líneas */
+}
+
+.evidence-card {
+    /* ...igual... */
+    border: 1px solid #ccc; /* Borde un poco más visible */
+}
+
+/* CABECERA MÁS GRANDE */
+.card-header h3 {
+    font-size: 1.6rem; /* Título mucho más visible */
+    letter-spacing: 1px;
+}
+
+.icfes-text {
+    font-size: 1.3rem; /* El texto del ICFES debe verse grande */
+    font-weight: 500;
+    color: #000; /* Negro puro para máximo contraste */
+}
+
+/* ESTRATEGIA: MEJORAS VISUALES */
+.strategy-title {
+    font-size: 1.5rem;
+    color: var(--educate-navy);
+    border-bottom: 2px solid var(--educate-orange); /* Línea de acento */
+    padding-bottom: 10px;
+}
+
+.pedagogy-box {
+    padding: 1.5rem; /* Más aire interno */
+}
+
+.box-header {
+    font-size: 1.1rem; /* Subtítulos más claros */
+    margin-bottom: 1rem;
+}
+
+.pedagogy-list {
+    font-size: 1.05rem; /* Lista legible */
+}
+
+.pedagogy-list li {
+    margin-bottom: 0.8rem; /* Separación entre items de lista */
+}
