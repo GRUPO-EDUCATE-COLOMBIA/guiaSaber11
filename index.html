@@ -3,94 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Componente Granular Saber 11</title>
-    <!-- Importando Fuente Barlow Condensed -->
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-<body style="background-color: #f0f2f5; padding: 20px;">
-
-    <!-- INICIO COMPONENTE: TARJETA DE EVIDENCIA -->
-    <article class="evidence-card">
-        
-        <!-- 1. Cabecera Contextual -->
-        <header class="card-header">
-            <h3>Matemáticas / Comp. Interpretación</h3>
-            <span class="badge">Afirmación 1</span>
-        </header>
-
-        <div class="card-body">
+    <title>Dashboard Saber 11 - Grupo Edúcate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- TOKENS DE DISEÑO --- */
+        :root {
+            --educate-navy: #17334B;
+            --font-main: 'Barlow Condensed', sans-serif;
+            --white: #ffffff;
+            --bg-light: #F4F6F8;
             
-            <!-- 2. Sección Oficial ICFES (Texto Legal) -->
-            <section class="icfes-section">
-                <span class="icfes-label">Evidencia 1.1 (Estándar Oficial)</span>
-                <p class="icfes-text">
-                    Da cuenta de las características básicas de la información presentada en diferentes formatos, como series, gráficas, tablas y esquemas.
-                </p>
-            </section>
+            /* Colores de Área */
+            --color-math: #11678B;
+            --color-lect: #D94D15;
+            --color-soc: #F39325;
+            --color-cienc: #54BBAB;
+            --color-ing: #B01829;
+            --color-aux: #607D8B;
+        }
 
-            <!-- 3. Dashboard Pedagógico (Estrategia Edúcate) -->
-            <section class="strategy-dashboard">
-                
-                <div class="strategy-title">
-                    <!-- Icono Bombillo SVG -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21h6"></path><path d="M12 3a6 6 0 0 1 6 6 4 4 0 0 0 4 4v1a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-1a4 4 0 0 0 4-4 6 6 0 0 1 6-6z"></path></svg>
-                    Estrategia Metodológica: "El Auditor de Gráficos"
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 40px;
+            color: var(--educate-navy);
+        }
+
+        /* --- HEADER --- */
+        .dashboard-header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 20px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dashboard-header p {
+            font-size: 1.4rem;
+            margin: 5px 0 0 0;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        /* --- GRID DE MÓDULOS --- */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* --- TARJETA DE MÓDULO --- */
+        .module-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        /* Bandera de Color Superior */
+        .card-flag {
+            height: 12px;
+            width: 100%;
+        }
+
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .icon-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .icon-container svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .module-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .module-desc {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .module-meta {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.6;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* --- COLORES ESPECÍFICOS --- */
+        .math .card-flag, .math .icon-container { background-color: var(--color-math); }
+        .math .module-title { color: var(--color-math); }
+
+        .lect .card-flag, .lect .icon-container { background-color: var(--color-lect); }
+        .lect .module-title { color: var(--color-lect); }
+
+        .soc .card-flag, .soc .icon-container { background-color: var(--color-soc); }
+        .soc .module-title { color: var(--color-soc); }
+
+        .cienc .card-flag, .cienc .icon-container { background-color: var(--color-cienc); }
+        .cienc .module-title { color: var(--color-cienc); }
+
+        .ing .card-flag, .ing .icon-container { background-color: var(--color-ing); }
+        .ing .module-title { color: var(--color-ing); }
+
+        .aux .card-flag, .aux .icon-container { background-color: var(--color-aux); }
+        .aux .module-title { color: var(--color-aux); }
+
+    </style>
+</head>
+<body>
+
+    <header class="dashboard-header">
+        <h1>Guía de Orientación Saber 11º</h1>
+        <p>Herramienta Interactiva para Capacitadores - Versión 2026-1</p>
+    </header>
+
+    <main class="modules-grid">
+
+        <!-- 1. MATEMÁTICAS -->
+        <a href="#" class="module-card math" onclick="alert('Aquí cargaremos el JSON de Matemáticas')">
+            <div class="card-flag"></div>
+            <div class="card-content">
+                <div>
+                    <div class="icon-container">
+                        <!-- Icono Calculadora -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg>
+                    </div>
+                    <h2 class="module-title">Matemáticas</h2>
+                    <p class="module-desc">Interpretación, Formulación y Argumentación. Contenidos genéricos y no genéricos.</p>
                 </div>
-
-                <div class="strategy-grid">
-                    
-                    <!-- A. Objetivo -->
-                    <div class="pedagogy-box box-objective">
-                        <div class="box-header">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-                            Objetivo Didáctico
-                        </div>
-                        <p style="margin:0; color:#333;">Desarrollar pensamiento crítico frente a la visualización de datos, identificando sesgos o errores estructurales en medios de comunicación.</p>
-                    </div>
-
-                    <!-- B. Desglose (Paso a Paso) -->
-                    <div class="pedagogy-box box-breakdown">
-                        <div class="box-header">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-                            Desglose de la Estrategia
-                        </div>
-                        <ol class="pedagogy-list">
-                            <li><strong>Proyección:</strong> El docente presenta 3 gráficos reales (uno correcto, uno manipulado, uno incompleto).</li>
-                            <li><strong>Rutina de Pensamiento:</strong> Se aplica "Veo / Pienso / Me pregunto" en silencio por 2 minutos.</li>
-                            <li><strong>Debate:</strong> Socialización enfocada en las escalas de los ejes y la proporcionalidad visual.</li>
-                            <li><strong>Corrección:</strong> Los estudiantes redibujan el gráfico manipulado en sus cuadernos de forma correcta.</li>
-                        </ol>
-                    </div>
-
-                    <!-- C. Tareas Estudiante -->
-                    <div class="pedagogy-box box-tasks">
-                        <div class="box-header">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
-                            Tareas del Estudiante
-                        </div>
-                        <ul class="pedagogy-list">
-                            <li>Traer un recorte de prensa con gráfico.</li>
-                            <li>Redactar "Juicio de Valor" sobre la veracidad del gráfico.</li>
-                        </ul>
-                    </div>
-
-                    <!-- D. Criterios Evaluación -->
-                    <div class="pedagogy-box box-criteria">
-                        <div class="box-header">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                            Criterios de Evaluación
-                        </div>
-                        <ul class="pedagogy-list">
-                            <li>Identifica si los ejes están truncados.</li>
-                            <li>Verifica proporcionalidad visual/numérica.</li>
-                        </ul>
-                    </div>
-
+                <div class="module-meta">
+                    <svg style="width:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    3 Competencias
                 </div>
-            </section>
-        </div>
-    </article>
+            </div>
+        </a>
+
+        <!-- 2. LECTURA CRÍTICA -->
+        <a href="#" class="module-card lect">
+            <div class="card-flag"></div>
+            <div class="card-content">
+                <div>
+                    <div class="icon-container">
+                        <!-- Icono Libro -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    </div>
+                    <h2 class="module-title">Lectura Crítica</h2>
+                    <p class="module-desc">Textos continuos y discontinuos. Niveles Literal, Inferencial y Crítico.</p>
+                </div>
+                <div class="module-meta">3 Competencias</div>
+            </div>
+        </a>
+
+        <!-- 3. SOCIALES -->
+        <a href="#" class="module-card soc">
+            <div class="card-flag"></div>
+            <div class="card-content">
+                <div>
+                    <div class="icon-container">
+                        <!-- Icono Personas/Mundo -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </div>
+                    <h2 class="module-title">Sociales y Ciudadanas</h2>
+                    <p class="module-desc">Pensamiento Social, Multiperspectivismo y Pensamiento Sistémico.</p>
+                </div>
+                <div class="module-meta">3 Competencias</div>
+            </div>
+        </a>
+
+        <!-- 4. CIENCIAS NATURALES -->
+        <a href="#" class="module-card cienc">
+            <div class="card-flag"></div>
+            <div class="card-content">
+                <div>
+                    <div class="icon-container">
+                        <!-- Icono Matraz -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"></path><path d="M14 2v7.31"></path><path d="M8.5 2h7"></path><path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path></svg>
+                    </div>
+                    <h2 class="module-title">Ciencias Naturales</h2>
+                    <p class="module-desc">Uso comprensivo, Explicación e Indagación. (Bio, Fís, Quím, CTS).</p>
+                </div>
+                <div class="module-meta">Matriz 3x4</div>
+            </div>
+        </a>
+
+        <!-- 5. INGLÉS -->
+        <a href="#" class="module-card ing">
+            <div class="card-flag"></div>
+            <div class="card-content">
+                <div>
+                    <div class="icon-container">
+                        <!-- Icono Chat -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    </div>
+                    <h2 class="module-title">Inglés</h2>
+                    <p class="module-desc">Partes 1 a 7. Alineado al Marco Común Europeo (Pre-A1 a B+).</p>
+                </div>
+                <div class="module-meta">7 Partes</div>
+            </div>
+        </a>
+
+        <!-- 6. MÓDULOS AUXILIARES -->
+        <a href="#" class="module-card aux">
+            <div class="card-flag"></div>
+            <div class="card-content">
+                <div>
+                    <div class="icon-container">
+                        <!-- Icono Clip -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    </div>
+                    <h2 class="module-title">Cuestionarios Auxiliares</h2>
+                    <p class="module-desc">Socioeconómico y Clima Escolar. Contexto del estudiante.</p>
+                </div>
+                <div class="module-meta">Informativo</div>
+            </div>
+        </a>
+
+    </main>
 
 </body>
 </html>
