@@ -3,149 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visor Maestro-Detalle - Saber 11º</title>
+    <title>Visor Saber 11 - Edúcate</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
-    
     <style>
-        /* LAYOUT MAESTRO-DETALLE */
-        body {
-            margin: 0;
-            display: grid;
-            grid-template-columns: 350px 1fr; /* Sidebar fija a la izquierda */
-            grid-template-rows: auto 1fr;
-            height: 100vh;
-            overflow: hidden; /* Evita scroll en el body, lo manejamos por columnas */
-            background-color: #f8f9fa;
-        }
-
-        /* Cabecera Superior (Ocupa las dos columnas) */
-        .area-header {
-            grid-column: 1 / -1;
-            padding: 15px 30px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 100;
-        }
-
-        .header-left h1 { margin: 0; font-size: 1.8rem; text-transform: uppercase; }
+        :root { --primary-color: #17334B; }
+        body { margin: 0; display: grid; grid-template-columns: 350px 1fr; height: 100vh; overflow: hidden; font-family: 'Barlow Condensed', sans-serif; }
         
-        /* SIDEBAR (MENÚ DE NAVEGACIÓN) */
-        .sidebar {
-            background: #fff;
-            border-right: 1px solid #e0e0e0;
-            overflow-y: auto;
-            padding: 20px 0;
-        }
-
-        /* Acordeón de Navegación */
-        .nav-group { margin-bottom: 5px; }
-        .nav-competencia {
-            background: #f0f0f0;
-            padding: 12px 20px;
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            border-left: 5px solid transparent;
-        }
+        /* BARRA LATERAL */
+        .sidebar { background: #f4f6f8; border-right: 1px solid #ddd; display: flex; flex-direction: column; overflow-y: auto; }
+        .sidebar-header { padding: 20px; color: white; background: var(--primary-color); }
+        .sidebar-header h2 { margin: 0; font-size: 1.5rem; text-transform: uppercase; }
         
-        .nav-afirmacion {
-            padding: 10px 20px 10px 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #555;
-            background: #fafafa;
-            border-bottom: 1px solid #eee;
-        }
+        .nav-tree { padding: 10px; }
+        .comp-group { margin-bottom: 15px; }
+        .comp-title { background: #e2e8f0; padding: 10px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; color: #475569; margin-bottom: 5px; }
+        .evid-item { padding: 10px 15px; font-size: 0.9rem; cursor: pointer; border-bottom: 1px solid #eee; transition: 0.2s; background: white; }
+        .evid-item:hover { background: #f0f7ff; }
+        .evid-item.active { border-left: 4px solid var(--primary-color); background: #eef6fc; font-weight: 600; }
 
-        .nav-evidencia {
-            padding: 10px 20px 10px 45px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .nav-evidencia:hover { background: #eef6fc; color: #11678B; }
-        .nav-evidencia.active { 
-            background: #e3f2fd; 
-            color: #11678B; 
-            font-weight: 700;
-            border-right: 4px solid #11678B;
-        }
-
-        /* Botones Extra (Específicos de área) */
-        .extra-nav {
-            padding: 20px;
-            border-top: 2px solid #eee;
-            margin-top: 20px;
-        }
-        .btn-extra {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            background: white;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: 'Barlow Condensed';
-            font-weight: 600;
-            text-align: left;
-        }
-
-        /* CONTENEDOR PRINCIPAL (VISOR) */
-        .main-content {
-            overflow-y: auto;
-            padding: 40px;
-            scroll-behavior: smooth;
-        }
-
-        #detail-view {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* Pantalla Vacía */
-        .empty-state {
-            text-align: center;
-            margin-top: 100px;
-            color: #aaa;
-        }
-        .empty-state svg { width: 80px; opacity: 0.2; }
-
-        @media (max-width: 900px) {
-            body { grid-template-columns: 1fr; }
-            .sidebar { display: none; } /* Aquí implementaríamos un menú móvil luego */
-        }
+        /* AREA DE CONTENIDO */
+        .main-viewer { overflow-y: auto; padding: 40px; background: white; }
+        .content-max-width { max-width: 800px; margin: 0 auto; }
+        .card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; background: #fff; }
+        .strategy-title { font-size: 2.2rem; color: var(--primary-color); margin-top: 0; }
+        .icfes-info { background: #f8fafc; padding: 15px; border-radius: 6px; margin-bottom: 20px; border-left: 4px solid #cbd5e1; }
+        
+        .btn-back { color: white; text-decoration: none; font-size: 0.8rem; display: block; margin-bottom: 10px; opacity: 0.8; }
+        .btn-back:hover { opacity: 1; }
     </style>
 </head>
 <body>
 
-    <header class="area-header" id="dynamic-header">
-        <div class="header-left">
-            <h1 id="area-title">Cargando...</h1>
+    <aside class="sidebar">
+        <div class="sidebar-header" id="side-header">
+            <a href="index.html" class="btn-back">← VOLVER AL TABLERO</a>
+            <h2 id="area-title">Cargando...</h2>
         </div>
-        <a href="index.html" style="color:white; text-decoration:none; font-weight:700;">✕ CERRAR</a>
-    </header>
-
-    <aside class="sidebar" id="sidebar-menu">
-        <!-- El JS inyectará aquí el árbol de navegación -->
-        <div class="loading-state" style="padding:20px;">Cargando menú...</div>
+        <nav class="nav-tree" id="nav-tree">
+            <!-- El JS inyectará el menú aquí -->
+        </nav>
     </aside>
 
-    <main class="main-content">
-        <div id="detail-view">
-            <div class="empty-state">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                <h2>Selecciona una evidencia</h2>
-                <p>Usa el menú de la izquierda para explorar las estrategias pedagógicas.</p>
+    <main class="main-viewer">
+        <div class="content-max-width" id="content-target">
+            <div style="text-align: center; padding-top: 100px; color: #94a3b8;">
+                <h2>Bienvenido al Visor</h2>
+                <p>Selecciona una evidencia del menú de la izquierda para ver la estrategia didáctica.</p>
             </div>
         </div>
     </main>
