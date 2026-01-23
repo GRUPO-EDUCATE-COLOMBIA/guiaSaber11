@@ -1,238 +1,57 @@
-/* --- TOKENS DE DISEÑO (Grupo Edúcate) --- */
-:root {
-    --educate-navy: #17334B;       /* Primario 1 */
-    --educate-blue: #11678B;       /* Primario 2 (Matemáticas) */
-    --educate-teal: #54BBAB;       /* Primario 3 (Objetivos) */
-    --educate-orange: #F39325;     /* Secundario 1 (Tareas/Acción) */
-    --educate-red: #D94D15;        /* Secundario 2 (Criterios/Evaluación) */
-    --educate-gray: #808080;
-    --educate-light-gray: #F4F6F8; /* Fondos suaves */
-    --font-family: 'Barlow Condensed', sans-serif;
+/* Estilos para etiquetas y badges */
+.comp-badge {
+    background: rgba(0,0,0,0.1);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    float: right;
 }
 
-/* --- ESTRUCTURA DE LA TARJETA MAESTRA --- */
-.evidence-card {
-    font-family: var(--font-family);
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(23, 51, 75, 0.1);
-    overflow: hidden;
-    margin-bottom: 2rem;
-    border: 1px solid #e0e0e0;
-}
-
-/* --- CABECERA (Contexto ICFES) --- */
-.card-header {
-    background-color: var(--educate-blue); /* Cambia según materia */
+.tag-componente {
+    background: var(--primary-color);
     color: white;
-    padding: 1rem 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.card-header h3 {
-    margin: 0;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-size: 1.2rem;
-}
-
-.badge {
-    background: rgba(255,255,255,0.2);
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    font-weight: 400;
-}
-
-/* --- CUERPO PRINCIPAL --- */
-.card-body {
-    padding: 0;
-}
-
-/* Sección Oficial (El "Qué") */
-.icfes-section {
-    padding: 1.5rem;
-    border-bottom: 1px solid #eee;
-}
-
-.icfes-label {
-    color: var(--educate-gray);
-    font-size: 0.85rem;
-    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
     font-weight: 700;
+    text-transform: uppercase;
+}
+
+.criterios-list {
+    margin: 10px 0 0 0;
+    padding-left: 20px;
+}
+
+.criterios-list li {
+    margin-bottom: 10px;
+    position: relative;
+    list-style: none;
+}
+
+.criterios-list li::before {
+    content: "✓";
+    color: var(--primary-color);
+    font-weight: bold;
+    position: absolute;
+    left: -20px;
+}
+
+.btn-extra {
     display: block;
-    margin-bottom: 0.5rem;
-}
-
-.icfes-text {
-    color: var(--educate-navy);
-    font-size: 1.1rem;
-    line-height: 1.5;
-    margin: 0;
-}
-
-/* --- SECCIÓN PEDAGÓGICA (El "Cómo" - La Estrategia) --- */
-.strategy-dashboard {
-    background-color: var(--educate-light-gray);
-    padding: 1.5rem;
-}
-
-.strategy-title {
-    color: var(--educate-navy);
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.strategy-title svg {
-    width: 28px;
-    height: 28px;
-    stroke: var(--educate-orange);
-}
-
-/* --- GRID LAYOUT PARA LA ESTRATEGIA --- */
-.strategy-grid {
-    display: grid;
-    grid-template-columns: 2fr 1.5fr; /* Izquierda ancha, Derecha compacta */
-    grid-template-rows: auto auto;
-    gap: 1rem;
-}
-
-/* Cajas individuales dentro del grid */
-.pedagogy-box {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 8px;
     background: white;
-    padding: 1.25rem;
-    border-radius: 8px;
-    border-left: 4px solid transparent;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: 'Barlow Condensed';
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-.box-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-}
-
-.box-header svg {
-    width: 20px;
-    height: 20px;
-}
-
-/* Estilos Específicos por Caja */
-.box-objective {
-    grid-column: 1 / -1; /* Ocupa todo el ancho arriba */
-    border-left-color: var(--educate-teal);
-}
-.box-objective .box-header { color: var(--educate-teal); }
-
-.box-breakdown {
-    grid-column: 1 / 2;
-    grid-row: 2 / 4; /* Ocupa altura vertical a la izquierda */
-    border-left-color: var(--educate-blue);
-}
-.box-breakdown .box-header { color: var(--educate-blue); }
-
-.box-tasks {
-    border-left-color: var(--educate-orange);
-}
-.box-tasks .box-header { color: var(--educate-orange); }
-
-.box-criteria {
-    border-left-color: var(--educate-red);
-}
-.box-criteria .box-header { color: var(--educate-red); }
-
-/* Listas internas limpias */
-.pedagogy-list {
-    margin: 0;
-    padding-left: 1.2rem;
-    font-size: 1rem;
-    color: #444;
-}
-
-.pedagogy-list li {
-    margin-bottom: 0.5rem;
-}
-
-/* Responsividad para móviles */
-@media (max-width: 768px) {
-    .strategy-grid {
-        grid-template-columns: 1fr; /* Todo en una columna */
-    }
-}
-:root {
-    /* ...colores iguales al anterior... */
-    --font-family: 'Barlow Condensed', sans-serif;
-    --base-size: 20px; /* AUMENTADO para mejor lectura */
-}
-
-body {
-    font-size: var(--base-size); /* Aplica tamaño base grande */
-    line-height: 1.6; /* Mayor espaciado entre líneas */
-}
-
-.evidence-card {
-    /* ...igual... */
-    border: 1px solid #ccc; /* Borde un poco más visible */
-}
-
-/* CABECERA MÁS GRANDE */
-.card-header h3 {
-    font-size: 1.6rem; /* Título mucho más visible */
-    letter-spacing: 1px;
-}
-
-.icfes-text {
-    font-size: 1.3rem; /* El texto del ICFES debe verse grande */
-    font-weight: 500;
-    color: #000; /* Negro puro para máximo contraste */
-}
-
-/* ESTRATEGIA: MEJORAS VISUALES */
-.strategy-title {
-    font-size: 1.5rem;
-    color: var(--educate-navy);
-    border-bottom: 2px solid var(--educate-orange); /* Línea de acento */
-    padding-bottom: 10px;
-}
-
-.pedagogy-box {
-    padding: 1.5rem; /* Más aire interno */
-}
-/* BADGES PARA CIENCIAS NATURALES */
-.badge-component {
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 12px;
-    margin-left: 10px;
-    text-transform: uppercase;
-    color: white;
-}
-
-.badge-bio { background-color: #4CAF50; } /* Verde */
-.badge-fis { background-color: #FF9800; } /* Naranja */
-.badge-quim { background-color: #9C27B0; } /* Morado */
-.badge-cts { background-color: #607D8B; } /* Azul Gris */
-.box-header {
-    font-size: 1.1rem; /* Subtítulos más claros */
-    margin-bottom: 1rem;
-}
-
-.pedagogy-list {
-    font-size: 1.05rem; /* Lista legible */
-}
-
-.pedagogy-list li {
-    margin-bottom: 0.8rem; /* Separación entre items de lista */
+.btn-extra:hover {
+    background: #f0f0f0;
+    border-color: var(--primary-color);
 }
