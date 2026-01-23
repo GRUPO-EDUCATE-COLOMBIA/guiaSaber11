@@ -2,93 +2,94 @@ document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const areaId = params.get('area');
 
-    if (!areaId) {
-        console.error("No se encontró el parámetro 'area' en la URL");
-        return;
-    }
+    if (!areaId) return;
 
-    // Ruta relativa para GitHub Pages
-    const jsonPath = `data/${areaId}.json`;
-
-    fetch(jsonPath)
-        .then(response => {
-            if (!response.ok) throw new Error(`Error al cargar ${jsonPath}`);
-            return response.json();
+    // GitHub es estricto con las rutas, usamos data/nombre.json
+    fetch(`data/${areaId}.json`)
+        .then(res => {
+            if (!res.ok) throw new Error("No se encontró el archivo JSON");
+            return res.json();
         })
         .then(data => {
-            renderizarTodo(data);
+            renderizarApp(data);
         })
-        .catch(error => {
-            console.error("Error en Fetch:", error);
-            document.getElementById('area-title').innerText = "Error de carga";
-            document.getElementById('content-target').innerHTML = `<p>Error: No se encontró el archivo data/${areaId}.json o el formato es incorrecto.</p>`;
+        .catch(err => {
+            console.error(err);
+            const target = document.getElementById('content-target');
+            if(target) target.innerHTML = "<h2>Error al cargar datos. Verifica que el archivo exista en la carpeta /data/</h2>";
         });
 });
 
-function renderizarTodo(data) {
-    // 1. Título y Colores
-    const color = data.meta.color_primario || "#333";
-    document.getElementById('area-title').innerText = data.meta.titulo;
-    document.getElementById('side-header').style.backgroundColor = color;
+function renderizarApp(data) {
+    const color = data.meta.color_primario || "#17334B";
+    const areaTitle = document.getElementById('area-title');
+    const sideHeader = document.getElementById('side-header');
+    const navTree = document.getElementById('nav-tree');
+
+    // Aplicar identidad visual
+    if(areaTitle) areaTitle.innerText = data.meta.titulo;
+    if(sideHeader) sideHeader.style.backgroundColor = color;
     document.documentElement.style.setProperty('--primary-color', color);
 
-    // 2. Menú Lateral
-    const navTree = document.getElementById('nav-tree');
+    if(!navTree) return;
     navTree.innerHTML = '';
 
+    // Construir menú lateral
     data.competencias.forEach(comp => {
-        const section = document.createElement('div');
-        section.innerHTML = `<div class="comp-title" style="font-weight:bold; padding:10px; background:#eee; margin-top:10px;">${comp.nombre}</div>`;
-        
+        const compBox = document.createElement('div');
+        compBox.className = 'comp-group';
+        compBox.innerHTML = `<div class="comp-title">${comp.nombre}</div>`;
+
         comp.afirmaciones.forEach(af => {
             af.evidencias.forEach(ev => {
                 const item = document.createElement('div');
                 item.className = 'evid-item';
-                item.style.padding = "10px";
-                item.style.cursor = "pointer";
-                item.style.borderBottom = "1px solid #ddd";
-                item.innerText = ev.texto_icfes.substring(0, 50) + "...";
-                
+                item.innerText = ev.texto_icfes.substring(0, 70) + "...";
                 item.onclick = () => {
-                    // Quitar activo de otros
-                    document.querySelectorAll('.evid-item').forEach(i => i.style.background = "none");
-                    item.style.background = "#eef";
-                    
+                    // Resaltar seleccionado
+                    document.querySelectorAll('.evid-item').forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
                     pintarDetalle(ev, comp.nombre, color);
                 };
-                section.appendChild(item);
+                compBox.appendChild(item);
             });
         });
-        navTree.appendChild(section);
+        navTree.appendChild(compBox);
     });
 }
 
 function pintarDetalle(ev, compNombre, color) {
     const target = document.getElementById('content-target');
+    if(!target) return;
+
     const est = ev.estrategia_didactica;
 
     target.innerHTML = `
-        <div style="border-left: 5px solid ${color}; padding: 20px; background: #f9f9f9; margin-bottom: 20px;">
-            <small>ICFES | ${compNombre}</small>
-            <p><strong>Evidencia:</strong> ${ev.texto_icfes}</p>
+        <div class="icfes-info">
+            <small>COMPETENCIA: ${compNombre}</small>
+            <p><strong>EVIDENCIA:</strong> ${ev.texto_icfes}</p>
         </div>
-        
-        <h2 style="color:${color}">${est.nombre}</h2>
+
+        <h1 class="strategy-title">${est.nombre}</h1>
+
         <div class="card">
-            <strong>Objetivo:</strong>
-            <p>${est.objetivo}</p>
+            <strong style="color:${color}; text-transform:uppercase;">Objetivo Pedagógico</strong>
+            <p style="font-size:1.2rem; margin-top:10px;">${est.objetivo}</p>
         </div>
-        
+
         <div class="card">
-            <strong>Fases:</strong>
-            <ul>
+            <strong style="color:${color}; text-transform:uppercase;">Fases de la Clase</strong>
+            <ul style="margin-top:10px; line-height:1.6;">
                 ${est.fases_metodologicas.map(f => `<li>${f}</li>`).join('')}
             </ul>
         </div>
 
-        <div style="background:${color}; color:white; padding:15px; border-radius:8px;">
-            <strong>Tarea Retadora:</strong>
-            <p>${est.tarea_retadora}</p>
+        <div class="card" style="background-color:${color}; color:white;">
+            <strong style="text-transform:uppercase;">Tarea Retadora</strong>
+            <p style="font-size:1.1rem; margin-top:10px;">${est.tarea_retadora}</p>
         </div>
     `;
+    
+    // Volver arriba en el visor
+    document.querySelector('.main-viewer').scrollTop = 0;
 }
