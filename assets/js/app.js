@@ -1,155 +1,116 @@
-// assets/js/app.js
-
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Detectar qué área pidió el usuario (ej: viewer.html?area=matematicas)
-    const urlParams = new URLSearchParams(window.location.search);
-    const areaId = urlParams.get('area');
-
+    const params = new URLSearchParams(window.location.search);
+    const areaId = params.get('area');
+    
     if (!areaId) {
-        alert("No se ha seleccionado un área.");
-        window.location.href = 'index.html'; // Volver al inicio
+        window.location.href = 'index.html';
         return;
     }
 
-    // 2. Cargar el archivo JSON correspondiente
+    // 1. Cargar Datos
     fetch(`data/${areaId}.json`)
-        .then(response => {
-            if (!response.ok) throw new Error("No se encontró el archivo de datos.");
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
-            renderArea(data);
+            inicializarVisor(data, areaId);
         })
-        .catch(error => {
-            console.error('Error:', error);
-            document.getElementById('app-container').innerHTML = `<h2 style="color:red; text-align:center;">Error cargando el módulo: ${areaId}</h2>`;
-        });
+        .catch(err => console.error("Error cargando el área:", err));
 });
 
-// 3. Función Principal de Renderizado
-function renderArea(data) {
-    const container = document.getElementById('app-container');
-    const headerTitle = document.getElementById('area-title');
-    const headerDesc = document.getElementById('area-desc');
-    const headerContainer = document.querySelector('.area-header');
+function inicializarVisor(data, areaId) {
+    // Configurar Header
+    const header = document.getElementById('dynamic-header');
+    const title = document.getElementById('area-title');
+    title.innerText = data.area;
+    header.style.backgroundColor = `var(--color-${areaId.split('_')[0]})`; // Usa los colores de tu CSS
 
-    // A. Configurar Cabecera (Colores y Títulos)
-    headerTitle.textContent = data.meta.titulo;
-    headerDesc.textContent = data.meta.descripcion;
-    headerContainer.style.backgroundColor = data.meta.color_primario;
-    
-    // Guardamos colores para usarlos en las tarjetas
-    const themeColor = data.meta.color_primario;
-    const secondaryColor = data.meta.color_secundario;
+    const sidebar = document.getElementById('sidebar-menu');
+    sidebar.innerHTML = ''; // Limpiar
 
-    // B. Recorrer Competencias
-    let htmlContent = '';
+    // 2. Construir Menú (Maestro)
+    data.competencias.forEach((comp, cIndex) => {
+        const compDiv = document.createElement('div');
+        compDiv.className = 'nav-group';
+        compDiv.innerHTML = `<div class="nav-competencia">${comp.nombre}</div>`;
 
-    data.competencias.forEach(competencia => {
-        // Título de la Competencia
-        htmlContent += `
-            <div class="competency-section">
-                <h2 style="color:${themeColor}; border-bottom: 2px solid ${themeColor}; padding-bottom:10px; margin-top:40px;">
-                    ${competencia.nombre} <span style="font-size:0.6em; opacity:0.7; float:right;">Peso: ${competencia.porcentaje || ''}</span>
-                </h2>
-                <p class="competency-def">${competencia.definicion}</p>
-        `;
+        // Si es Inglés, la estructura es Partes, si no, es Afirmaciones
+        const subNivel = comp.afirmaciones || comp.partes;
+        const subLabel = comp.afirmaciones ? "Afirmación" : "Parte";
 
-        // Recorrer Afirmaciones
-        competencia.afirmaciones.forEach(afirmacion => {
-            
-            // Recorrer Evidencias (Aquí creamos la Tarjeta Maestra)
-            afirmacion.evidencias.forEach(evidencia => {
-                htmlContent += createCardHTML(evidencia, afirmacion.texto, themeColor, secondaryColor);
+        subNivel.forEach((sub, sIndex) => {
+            const subDiv = document.createElement('div');
+            subDiv.className = 'nav-afirmacion';
+            subDiv.innerText = `${subLabel}: ${sub.id || (sIndex + 1)}`;
+            compDiv.appendChild(subDiv);
+
+            sub.evidencias.forEach((ev, eIndex) => {
+                const evDiv = document.createElement('div');
+                evDiv.className = 'nav-evidencia';
+                evDiv.innerText = ev.definicion.substring(0, 60) + '...';
+                evDiv.onclick = () => renderizarDetalle(ev, comp.nombre, areaId);
+                compDiv.appendChild(evDiv);
             });
-
         });
-
-        htmlContent += `</div>`; // Cierre sección competencia
+        sidebar.appendChild(compDiv);
     });
 
-    container.innerHTML = htmlContent;
+    // 3. Agregar Botones Extra según el área
+    agregarBotonesExtra(areaId, sidebar);
 }
 
-// 4. Generador de HTML de la Tarjeta (El Diseño que aprobaste)
-function createCardHTML(evidencia, afirmacionTexto, themeColor, accentColor) {
-    const est = evidencia.estrategia_didactica;
+function renderizarDetalle(evidencia, nombreComp, areaId) {
+    const container = document.getElementById('detail-view');
     
-    // Generar lista de fases metodológicas
-    let fasesHTML = '';
-    if (est.fases_metodologicas) {
-        est.fases_metodologicas.forEach(fase => {
-            fasesHTML += `<li>${fase}</li>`;
-        });
-    }
+    // Marcar como activo en el menú
+    document.querySelectorAll('.nav-evidencia').forEach(el => el.classList.remove('active'));
+    event.currentTarget.classList.add('active');
 
-    // Generar lista de criterios
-    let criteriosHTML = '';
-    if (est.criterios_evaluacion) {
-        est.criterios_evaluacion.forEach(criterio => {
-            criteriosHTML += `<li>${criterio}</li>`;
-        });
-    }
-
-    // Badge de Componente (Para Ciencias)
-    let badgeHTML = '';
-    if(evidencia.componente_tematico) {
-        let badgeColor = '#999';
-        if(evidencia.componente_tematico === 'BIOLÓGICO') badgeColor = '#4CAF50';
-        if(evidencia.componente_tematico === 'FÍSICO') badgeColor = '#FF9800';
-        if(evidencia.componente_tematico === 'QUÍMICO') badgeColor = '#9C27B0';
-        badgeHTML = `<span style="background:${badgeColor}; font-size:0.7em; padding:2px 8px; border-radius:4px; margin-left:10px; color:white;">${evidencia.componente_tematico}</span>`;
-    }
-
-    return `
-    <article class="evidence-card">
-        <!-- HEADER TARJETA -->
-        <header class="card-header" style="background-color: ${themeColor};">
-            <div>
-                <span style="font-size: 0.8rem; opacity: 0.9; display:block; margin-bottom:4px;">AFIRMACIÓN: ${afirmacionTexto.substring(0, 50)}...</span>
-                <h3 style="margin:0; font-size:1.4rem;">Evidencia ${evidencia.id} ${badgeHTML}</h3>
-            </div>
-        </header>
-
-        <!-- EVIDENCIA OFICIAL -->
-        <div class="icfes-body">
-            <p class="text-evidence">${evidencia.texto_icfes}</p>
+    // Construir el HTML del detalle (Las "Tarjetas" que ya teníamos)
+    container.innerHTML = `
+        <div class="evidence-header" style="margin-bottom:30px; border-bottom: 3px solid var(--color-${areaId.split('_')[0]})">
+            <small style="text-transform:uppercase; color:#888;">${nombreComp}</small>
+            <h2 style="font-size:2rem; margin-top:10px;">${evidencia.definicion}</h2>
         </div>
 
-        <!-- DASHBOARD PEDAGÓGICO -->
-        <section class="strategy-dashboard">
-            <div class="strategy-header">
-                <!-- Icono Foco -->
-                <svg viewBox="0 0 24 24" fill="none" stroke="#F39325" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:32px; height:32px;"><path d="M9 21h6"></path><path d="M12 3a6 6 0 0 1 6 6 4 4 0 0 0 4 4v1a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-1a4 4 0 0 0 4-4 6 6 0 0 1 6-6z"></path></svg>
-                <h3 class="strategy-name" style="color:${themeColor}">${est.nombre}</h3>
+        <div class="strategy-card objective">
+            <h3>Objetivo de Aprendizaje</h3>
+            <p>${evidencia.estrategia.objetivo}</p>
+        </div>
+
+        <div class="strategy-card sequence">
+            <h3>Secuencia Didáctica</h3>
+            <div class="phases">
+                ${evidencia.estrategia.fases.map(fase => `
+                    <div class="phase">
+                        <strong>${fase.paso}:</strong> ${fase.descripcion}
+                    </div>
+                `).join('')}
             </div>
+        </div>
 
-            <div class="pedagogy-grid">
-                <!-- Objetivo -->
-                <div class="p-box box-objective">
-                    <div class="p-box-title" style="color:#54BBAB">OBJETIVO DIDÁCTICO</div>
-                    <p>${est.objetivo}</p>
-                </div>
-
-                <!-- Fases -->
-                <div class="p-box box-phases" style="border-left-color:${themeColor}">
-                    <div class="p-box-title" style="color:${themeColor}">SECUENCIA DIDÁCTICA</div>
-                    <ul class="phase-list">${fasesHTML}</ul>
-                </div>
-
-                <!-- Tarea -->
-                <div class="p-box box-task">
-                    <div class="p-box-title" style="color:#B01829">TAREA RETADORA</div>
-                    <p>${est.tarea_retadora}</p>
-                </div>
-
-                <!-- Criterios -->
-                <div class="p-box box-criteria">
-                    <div class="p-box-title" style="color:#F39325">CRITERIOS EVALUACIÓN</div>
-                    <ul class="check-list">${criteriosHTML}</ul>
-                </div>
-            </div>
-        </section>
-    </article>
+        <div class="strategy-card tasks">
+            <h3>Tareas del Estudiante</h3>
+            <ul>
+                ${evidencia.estrategia.tareas_estudiante.map(tarea => `<li>${tarea}</li>`).join('')}
+            </ul>
+        </div>
     `;
+}
+
+function agregarBotonesExtra(areaId, sidebar) {
+    const extraDiv = document.createElement('div');
+    extraDiv.className = 'extra-nav';
+    
+    if (areaId === 'matematicas') {
+        extraDiv.innerHTML = `
+            <button class="btn-extra">📊 Contenidos Genéricos</button>
+            <button class="btn-extra">📐 Contenidos No Genéricos</button>
+            <button class="btn-extra">🏢 Contextos de Evaluación</button>
+        `;
+    } else if (areaId === 'ciencias_naturales') {
+        extraDiv.innerHTML = `
+            <button class="btn-extra">🧪 Componentes (Biol/Fís/Quím)</button>
+        `;
+    }
+    
+    if (extraDiv.innerHTML !== '') sidebar.appendChild(extraDiv);
 }
