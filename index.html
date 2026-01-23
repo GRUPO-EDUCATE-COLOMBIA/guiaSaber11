@@ -1,75 +1,58 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visor Pedagógico - Saber 11</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <style>
-        :root { --primary-color: #333; }
-        body { margin: 0; display: grid; grid-template-columns: 380px 1fr; height: 100vh; overflow: hidden; font-family: 'Barlow Condensed', sans-serif; }
-        
-        /* SIDEBAR */
-        .sidebar { background: #f4f6f8; border-right: 1px solid #ddd; display: flex; flex-direction: column; overflow-y: auto; }
-        .sidebar-header { padding: 20px; color: white; background: var(--primary-color); }
-        .sidebar-header h2 { margin: 0; font-size: 1.8rem; text-transform: uppercase; }
-        
-        .nav-tree { padding: 10px; }
-        .comp-group { margin-bottom: 15px; }
-        .comp-title { background: #e2e8f0; padding: 10px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; border-radius: 4px; cursor: default; color: #475569; }
-        .afirm-title { padding: 8px 10px 8px 15px; font-weight: 600; font-size: 0.85rem; color: #64748b; border-bottom: 1px solid #e2e8f0; }
-        .evid-item { padding: 10px 15px 10px 25px; font-size: 0.9rem; cursor: pointer; border-left: 3px solid transparent; transition: 0.2s; line-height: 1.2; }
-        .evid-item:hover { background: #fff; color: var(--primary-color); }
-        .evid-item.active { background: #fff; border-left-color: var(--primary-color); color: var(--primary-color); font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+<main class="modules-grid">
 
-        /* CONTENIDO PRINCIPAL */
-        .main-viewer { overflow-y: auto; padding: 40px; background: #fff; scroll-behavior: smooth; }
-        .content-max-width { max-width: 850px; margin: 0 auto; }
-
-        /* TARJETAS PEDAGÓGICAS */
-        .card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; }
-        .card-label { text-transform: uppercase; font-weight: 700; font-size: 0.8rem; color: var(--primary-color); letter-spacing: 1px; margin-bottom: 10px; display: block; }
-        
-        .icfes-box { background: #f8fafc; border-left: 5px solid #cbd5e1; padding: 20px; margin-bottom: 30px; }
-        .icfes-box h3 { margin: 0 0 10px 0; font-size: 1.1rem; color: #475569; }
-
-        .strategy-title { font-size: 2.5rem; color: var(--primary-color); margin: 0 0 20px 0; line-height: 1; }
-        
-        .phase-list { display: flex; flex-direction: column; gap: 15px; }
-        .phase-item { display: flex; gap: 15px; }
-        .phase-number { background: var(--primary-color); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 0.8rem; }
-
-        .task-banner { background: #fff7ed; border: 2px dashed #fb923c; padding: 20px; border-radius: 12px; }
-
-        .empty-state { text-align: center; padding: 100px 20px; color: #94a3b8; }
-        .btn-back { display: inline-block; margin-bottom: 20px; color: white; text-decoration: none; font-weight: 600; font-size: 0.9rem; opacity: 0.8; }
-        .btn-back:hover { opacity: 1; }
-    </style>
-</head>
-<body>
-
-    <aside class="sidebar">
-        <div class="sidebar-header" id="side-header">
-            <a href="index.html" class="btn-back">← VOLVER AL INICIO</a>
-            <h2 id="area-label">Cargando...</h2>
-        </div>
-        <nav class="nav-tree" id="nav-tree">
-            <!-- Inyectado por JS -->
-        </nav>
-    </aside>
-
-    <main class="main-viewer">
-        <div class="content-max-width" id="content-target">
-            <div class="empty-state">
-                <h2 style="font-size: 3rem;">BIENVENIDO</h2>
-                <p style="font-size: 1.2rem;">Selecciona una evidencia del menú lateral para visualizar la estrategia didáctica.</p>
+        <!-- 1. MATEMÁTICAS -->
+        <a href="viewer.html?area=matematicas" class="module-card math">
+            <div class="card-flag"></div>
+            <div class="card-content">
+                <div>
+                    <h2 class="module-title">Matemáticas</h2>
+                    <p class="module-desc">Interpretación, Formulación y Argumentación.</p>
+                </div>
             </div>
-        </div>
-    </main>
+        </a>
 
-    <script src="assets/js/app.js"></script>
-</body>
-</html>
+        <!-- 2. LECTURA CRÍTICA -->
+        <a href="viewer.html?area=lectura_critica" class="module-card lect">
+            <div class="card-flag"></div>
+            <div class="card-content">
+                <div>
+                    <h2 class="module-title">Lectura Crítica</h2>
+                    <p class="module-desc">Comprensión de textos continuos y discontinuos.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 3. SOCIALES Y CIUDADANAS -->
+        <a href="viewer.html?area=sociales" class="module-card soc">
+            <div class="card-flag"></div>
+            <div class="card-content">
+                <div>
+                    <h2 class="module-title">Sociales</h2>
+                    <p class="module-desc">Pensamiento Social y Multiperspectivismo.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 4. CIENCIAS NATURALES -->
+        <a href="viewer.html?area=ciencias_naturales" class="module-card cienc">
+            <div class="card-flag"></div>
+            <div class="card-content">
+                <div>
+                    <h2 class="module-title">Ciencias Naturales</h2>
+                    <p class="module-desc">Biología, Física, Química y CTS.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- 5. INGLÉS -->
+        <a href="viewer.html?area=ingles" class="module-card ing">
+            <div class="card-flag"></div>
+            <div class="card-content">
+                <div>
+                    <h2 class="module-title">Inglés</h2>
+                    <p class="module-desc">Competencia comunicativa (Marco Europeo).</p>
+                </div>
+            </div>
+        </a>
+
+    </main>
