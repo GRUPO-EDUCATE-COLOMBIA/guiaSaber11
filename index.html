@@ -1,13 +1,119 @@
-<main class="modules-grid">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Saber 11 - Grupo Edúcate</title>
+    
+    <!-- FUENTE: Barlow Condensed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CONEXIÓN A ESTILOS GLOBALES (Si tienes uno externo) -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <style>
+        :root {
+            --color-math: #11678B;
+            --color-lect: #D94D15;
+            --color-soc: #F39325;
+            --color-cienc: #54BBAB;
+            --color-ing: #B01829;
+            --educate-navy: #17334B;
+        }
+
+        body {
+            background-color: #F4F6F8;
+            margin: 0;
+            padding: 40px;
+            font-family: 'Barlow Condensed', sans-serif;
+        }
+
+        .dashboard-header {
+            margin-bottom: 50px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 20px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            text-transform: uppercase;
+            color: var(--educate-navy);
+        }
+
+        /* GRID DE MÓDULOS */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* TARJETA DE MÓDULO */
+        .module-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(23, 51, 75, 0.08);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .module-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(23, 51, 75, 0.15);
+        }
+
+        .card-flag { height: 8px; width: 100%; }
+
+        .card-content { padding: 30px; }
+
+        .module-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 10px 0;
+            text-transform: uppercase;
+        }
+
+        .module-desc { color: #666; line-height: 1.4; margin-bottom: 20px; }
+
+        /* COLORES POR ÁREA */
+        .math .card-flag { background: var(--color-math); }
+        .math .module-title { color: var(--color-math); }
+        
+        .lect .card-flag { background: var(--color-lect); }
+        .lect .module-title { color: var(--color-lect); }
+        
+        .soc .card-flag { background: var(--color-soc); }
+        .soc .module-title { color: var(--color-soc); }
+        
+        .cienc .card-flag { background: var(--color-cienc); }
+        .cienc .module-title { color: var(--color-cienc); }
+        
+        .ing .card-flag { background: var(--color-ing); }
+        .ing .module-title { color: var(--color-ing); }
+    </style>
+</head>
+<body>
+
+    <header class="dashboard-header">
+        <h1>Guía de Orientación Saber 11º</h1>
+        <p>Herramienta Interactiva para Capacitadores - Grupo Edúcate</p>
+    </header>
+
+    <main class="modules-grid">
 
         <!-- 1. MATEMÁTICAS -->
         <a href="viewer.html?area=matematicas" class="module-card math">
             <div class="card-flag"></div>
             <div class="card-content">
-                <div>
-                    <h2 class="module-title">Matemáticas</h2>
-                    <p class="module-desc">Interpretación, Formulación y Argumentación.</p>
-                </div>
+                <h2 class="module-title">Matemáticas</h2>
+                <p class="module-desc">Interpretación, Formulación y Argumentación. Contenidos genéricos y no genéricos.</p>
             </div>
         </a>
 
@@ -15,21 +121,17 @@
         <a href="viewer.html?area=lectura_critica" class="module-card lect">
             <div class="card-flag"></div>
             <div class="card-content">
-                <div>
-                    <h2 class="module-title">Lectura Crítica</h2>
-                    <p class="module-desc">Comprensión de textos continuos y discontinuos.</p>
-                </div>
+                <h2 class="module-title">Lectura Crítica</h2>
+                <p class="module-desc">Comprensión lectora de textos continuos y discontinuos.</p>
             </div>
         </a>
 
-        <!-- 3. SOCIALES Y CIUDADANAS -->
+        <!-- 3. SOCIALES -->
         <a href="viewer.html?area=sociales" class="module-card soc">
             <div class="card-flag"></div>
             <div class="card-content">
-                <div>
-                    <h2 class="module-title">Sociales</h2>
-                    <p class="module-desc">Pensamiento Social y Multiperspectivismo.</p>
-                </div>
+                <h2 class="module-title">Sociales</h2>
+                <p class="module-desc">Pensamiento Social, Multiperspectivismo y Pensamiento Sistémico.</p>
             </div>
         </a>
 
@@ -37,10 +139,8 @@
         <a href="viewer.html?area=ciencias_naturales" class="module-card cienc">
             <div class="card-flag"></div>
             <div class="card-content">
-                <div>
-                    <h2 class="module-title">Ciencias Naturales</h2>
-                    <p class="module-desc">Biología, Física, Química y CTS.</p>
-                </div>
+                <h2 class="module-title">Ciencias Naturales</h2>
+                <p class="module-desc">Biología, Física, Química y CTS. Indagación y explicación.</p>
             </div>
         </a>
 
@@ -48,11 +148,12 @@
         <a href="viewer.html?area=ingles" class="module-card ing">
             <div class="card-flag"></div>
             <div class="card-content">
-                <div>
-                    <h2 class="module-title">Inglés</h2>
-                    <p class="module-desc">Competencia comunicativa (Marco Europeo).</p>
-                </div>
+                <h2 class="module-title">Inglés</h2>
+                <p class="module-desc">Evaluación alineada al Marco Común Europeo (A1 a B+).</p>
             </div>
         </a>
 
     </main>
+
+</body>
+</html>
