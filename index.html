@@ -3,309 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Saber 11 - Grupo Edúcate</title>
-    
-    <!-- FUENTE: Barlow Condensed -->
+    <title>Visor Pedagógico - Saber 11</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- CONEXIÓN A ESTILOS GLOBALES -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
-    
     <style>
-        /* ESTILOS ESPECÍFICOS DEL DASHBOARD (MENÚ) */
+        :root { --primary-color: #333; }
+        body { margin: 0; display: grid; grid-template-columns: 380px 1fr; height: 100vh; overflow: hidden; font-family: 'Barlow Condensed', sans-serif; }
         
-        :root {
-            /* Colores Semánticos por Área */
-            --color-math: #11678B;
-            --color-lect: #D94D15;
-            --color-soc: #F39325;
-            --color-cienc: #54BBAB;
-            --color-ing: #B01829;
-            --color-aux: #607D8B;
-        }
+        /* SIDEBAR */
+        .sidebar { background: #f4f6f8; border-right: 1px solid #ddd; display: flex; flex-direction: column; overflow-y: auto; }
+        .sidebar-header { padding: 20px; color: white; background: var(--primary-color); }
+        .sidebar-header h2 { margin: 0; font-size: 1.8rem; text-transform: uppercase; }
+        
+        .nav-tree { padding: 10px; }
+        .comp-group { margin-bottom: 15px; }
+        .comp-title { background: #e2e8f0; padding: 10px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; border-radius: 4px; cursor: default; color: #475569; }
+        .afirm-title { padding: 8px 10px 8px 15px; font-weight: 600; font-size: 0.85rem; color: #64748b; border-bottom: 1px solid #e2e8f0; }
+        .evid-item { padding: 10px 15px 10px 25px; font-size: 0.9rem; cursor: pointer; border-left: 3px solid transparent; transition: 0.2s; line-height: 1.2; }
+        .evid-item:hover { background: #fff; color: var(--primary-color); }
+        .evid-item.active { background: #fff; border-left-color: var(--primary-color); color: var(--primary-color); font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
 
-        body {
-            background-color: #F4F6F8;
-            margin: 0;
-            padding: 40px;
-            display: block; /* Sobrescribe el flex del viewer si comparten CSS */
-        }
+        /* CONTENIDO PRINCIPAL */
+        .main-viewer { overflow-y: auto; padding: 40px; background: #fff; scroll-behavior: smooth; }
+        .content-max-width { max-width: 850px; margin: 0 auto; }
 
-        /* --- HEADER PRINCIPAL --- */
-        .dashboard-header {
-            margin-bottom: 50px;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 20px;
-            animation: fadeIn 0.8s ease-out;
-        }
+        /* TARJETAS PEDAGÓGICAS */
+        .card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; }
+        .card-label { text-transform: uppercase; font-weight: 700; font-size: 0.8rem; color: var(--primary-color); letter-spacing: 1px; margin-bottom: 10px; display: block; }
+        
+        .icfes-box { background: #f8fafc; border-left: 5px solid #cbd5e1; padding: 20px; margin-bottom: 30px; }
+        .icfes-box h3 { margin: 0 0 10px 0; font-size: 1.1rem; color: #475569; }
 
-        .dashboard-header h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--educate-navy);
-            line-height: 1;
-        }
+        .strategy-title { font-size: 2.5rem; color: var(--primary-color); margin: 0 0 20px 0; line-height: 1; }
+        
+        .phase-list { display: flex; flex-direction: column; gap: 15px; }
+        .phase-item { display: flex; gap: 15px; }
+        .phase-number { background: var(--primary-color); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 0.8rem; }
 
-        .dashboard-header p {
-            font-size: 1.5rem;
-            margin: 10px 0 0 0;
-            color: #666;
-            font-weight: 500;
-        }
+        .task-banner { background: #fff7ed; border: 2px dashed #fb923c; padding: 20px; border-radius: 12px; }
 
-        /* --- GRID DE MÓDULOS --- */
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            padding-bottom: 60px;
-        }
-
-        /* --- TARJETA DE MÓDULO --- */
-        .module-card {
-            background: #fff;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(23, 51, 75, 0.08);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(0,0,0,0.05);
-            position: relative;
-            height: 100%; /* Para igualar alturas */
-        }
-
-        .module-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 30px rgba(23, 51, 75, 0.15);
-            border-color: rgba(0,0,0,0.1);
-        }
-
-        /* Bandera de Color Superior */
-        .card-flag {
-            height: 8px;
-            width: 100%;
-        }
-
-        .card-content {
-            padding: 30px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        /* Icono Circular */
-        .icon-circle {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: white;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .icon-circle svg {
-            width: 36px;
-            height: 36px;
-            stroke-width: 2;
-        }
-
-        .module-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin: 0 0 10px 0;
-            text-transform: uppercase;
-            line-height: 1;
-        }
-
-        .module-desc {
-            font-size: 1.1rem;
-            color: #666;
-            margin: 0 0 20px 0;
-            line-height: 1.4;
-        }
-
-        /* Meta info (abajo) */
-        .module-footer {
-            margin-top: auto;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            color: #888;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* --- CLASES POR ÁREA --- */
-        /* Matemáticas */
-        .math .card-flag, .math .icon-circle { background-color: var(--color-math); }
-        .math .module-title { color: var(--color-math); }
-
-        /* Lectura */
-        .lect .card-flag, .lect .icon-circle { background-color: var(--color-lect); }
-        .lect .module-title { color: var(--color-lect); }
-
-        /* Sociales */
-        .soc .card-flag, .soc .icon-circle { background-color: var(--color-soc); }
-        .soc .module-title { color: var(--color-soc); }
-
-        /* Ciencias */
-        .cienc .card-flag, .cienc .icon-circle { background-color: var(--color-cienc); }
-        .cienc .module-title { color: var(--color-cienc); }
-
-        /* Inglés */
-        .ing .card-flag, .ing .icon-circle { background-color: var(--color-ing); }
-        .ing .module-title { color: var(--color-ing); }
-
-        /* Auxiliares */
-        .aux .card-flag, .aux .icon-circle { background-color: var(--color-aux); }
-        .aux .module-title { color: var(--color-aux); }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            body { padding: 20px; }
-            .dashboard-header h1 { font-size: 2.5rem; }
-        }
-
+        .empty-state { text-align: center; padding: 100px 20px; color: #94a3b8; }
+        .btn-back { display: inline-block; margin-bottom: 20px; color: white; text-decoration: none; font-weight: 600; font-size: 0.9rem; opacity: 0.8; }
+        .btn-back:hover { opacity: 1; }
     </style>
 </head>
 <body>
 
-    <header class="dashboard-header">
-        <h1>Guía de Orientación Saber 11º</h1>
-        <p>Herramienta Interactiva para Capacitadores - Versión 2026-1</p>
-    </header>
+    <aside class="sidebar">
+        <div class="sidebar-header" id="side-header">
+            <a href="index.html" class="btn-back">← VOLVER AL INICIO</a>
+            <h2 id="area-label">Cargando...</h2>
+        </div>
+        <nav class="nav-tree" id="nav-tree">
+            <!-- Inyectado por JS -->
+        </nav>
+    </aside>
 
-    <main class="modules-grid">
-
-        <!-- 1. MATEMÁTICAS -->
-        <a href="viewer.html?area=matematicas" class="module-card math">
-            <div class="card-flag"></div>
-            <div class="card-content">
-                <div>
-                    <div class="icon-circle">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg>
-                    </div>
-                    <h2 class="module-title">Matemáticas</h2>
-                    <p class="module-desc">Interpretación, Formulación y Argumentación. Contenidos genéricos y no genéricos.</p>
-                </div>
-                <div class="module-footer">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    3 Competencias
-                </div>
+    <main class="main-viewer">
+        <div class="content-max-width" id="content-target">
+            <div class="empty-state">
+                <h2 style="font-size: 3rem;">BIENVENIDO</h2>
+                <p style="font-size: 1.2rem;">Selecciona una evidencia del menú lateral para visualizar la estrategia didáctica.</p>
             </div>
-        </a>
-
-        <!-- 2. LECTURA CRÍTICA -->
-        <a href="viewer.html?area=lectura_critica" class="module-card lect">
-            <div class="card-flag"></div>
-            <div class="card-content">
-                <div>
-                    <div class="icon-circle">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                    </div>
-                    <h2 class="module-title">Lectura Crítica</h2>
-                    <p class="module-desc">Comprensión lectora. Textos continuos y discontinuos. Niveles Literal, Inferencial y Crítico.</p>
-                </div>
-                <div class="module-footer">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    3 Competencias
-                </div>
-            </div>
-        </a>
-
-        <!-- 3. SOCIALES Y CIUDADANAS -->
-        <a href="viewer.html?area=sociales" class="module-card soc">
-            <div class="card-flag"></div>
-            <div class="card-content">
-                <div>
-                    <div class="icon-circle">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                    </div>
-                    <h2 class="module-title">Sociales</h2>
-                    <p class="module-desc">Pensamiento Social, Multiperspectivismo y Pensamiento Sistémico. Constitución.</p>
-                </div>
-                <div class="module-footer">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    3 Competencias
-                </div>
-            </div>
-        </a>
-
-        <!-- 4. CIENCIAS NATURALES -->
-        <a href="viewer.html?area=ciencias_naturales" class="module-card cienc">
-            <div class="card-flag"></div>
-            <div class="card-content">
-                <div>
-                    <div class="icon-circle">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22h12a2 2 0 0 0 2-2V8l-6-6-6 6v12a2 2 0 0 0 2 2z"></path><line x1="12" y1="12" x2="12" y2="22"></line><path d="M12 12l-4 5"></path><path d="M12 12l4 5"></path></svg>
-                    </div>
-                    <h2 class="module-title">Ciencias Naturales</h2>
-                    <p class="module-desc">Biología, Física, Química y CTS. Uso comprensivo, Explicación e Indagación.</p>
-                </div>
-                <div class="module-footer">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    Matriz 3x4
-                </div>
-            </div>
-        </a>
-
-        <!-- 5. INGLÉS -->
-        <a href="viewer.html?area=ingles" class="module-card ing">
-            <div class="card-flag"></div>
-            <div class="card-content">
-                <div>
-                    <div class="icon-circle">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                    </div>
-                    <h2 class="module-title">Inglés</h2>
-                    <p class="module-desc">Evaluación alineada al Marco Común Europeo. Desde Pre-A1 hasta B+.</p>
-                </div>
-                <div class="module-footer">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    7 Partes
-                </div>
-            </div>
-        </a>
-
-        <!-- 6. AUXILIARES -->
-        <a href="#" class="module-card aux" onclick="alert('Módulo Informativo: Cuestionario Socioeconómico y Clima Escolar.')">
-            <div class="card-flag"></div>
-            <div class="card-content">
-                <div>
-                    <div class="icon-circle">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                    </div>
-                    <h2 class="module-title">Auxiliares</h2>
-                    <p class="module-desc">Cuestionarios Socioeconómico y Clima Escolar (Ansiedad, Riesgo, Protección).</p>
-                </div>
-                <div class="module-footer">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    Contexto
-                </div>
-            </div>
-        </a>
-
+        </div>
     </main>
 
+    <script src="assets/js/app.js"></script>
 </body>
 </html>
