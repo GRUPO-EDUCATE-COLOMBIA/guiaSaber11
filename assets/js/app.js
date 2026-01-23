@@ -1,116 +1,99 @@
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const areaId = params.get('area');
-    
-    if (!areaId) {
-        window.location.href = 'index.html';
-        return;
-    }
 
-    // 1. Cargar Datos
+    if (!areaId) { window.location.href = 'index.html'; return; }
+
     fetch(`data/${areaId}.json`)
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
-            inicializarVisor(data, areaId);
-        })
-        .catch(err => console.error("Error cargando el área:", err));
+            document.title = `Guía Edúcate - ${data.meta.titulo}`;
+            setupInterface(data);
+        });
 });
 
-function inicializarVisor(data, areaId) {
-    // Configurar Header
-    const header = document.getElementById('dynamic-header');
-    const title = document.getElementById('area-title');
-    title.innerText = data.area;
-    header.style.backgroundColor = `var(--color-${areaId.split('_')[0]})`; // Usa los colores de tu CSS
+function setupInterface(data) {
+    const root = document.documentElement;
+    root.style.setProperty('--primary-color', data.meta.color_primario);
+    
+    document.getElementById('area-label').innerText = data.meta.titulo;
+    const navTree = document.getElementById('nav-tree');
+    
+    data.competencias.forEach(comp => {
+        const compGroup = document.createElement('div');
+        compGroup.className = 'comp-group';
+        compGroup.innerHTML = `<div class="comp-title">${comp.nombre}</div>`;
 
-    const sidebar = document.getElementById('sidebar-menu');
-    sidebar.innerHTML = ''; // Limpiar
+        comp.afirmaciones.forEach(af => {
+            const afTitle = document.createElement('div');
+            afTitle.className = 'afirm-title';
+            afTitle.innerText = af.texto.substring(0, 80) + '...';
+            compGroup.appendChild(afTitle);
 
-    // 2. Construir Menú (Maestro)
-    data.competencias.forEach((comp, cIndex) => {
-        const compDiv = document.createElement('div');
-        compDiv.className = 'nav-group';
-        compDiv.innerHTML = `<div class="nav-competencia">${comp.nombre}</div>`;
-
-        // Si es Inglés, la estructura es Partes, si no, es Afirmaciones
-        const subNivel = comp.afirmaciones || comp.partes;
-        const subLabel = comp.afirmaciones ? "Afirmación" : "Parte";
-
-        subNivel.forEach((sub, sIndex) => {
-            const subDiv = document.createElement('div');
-            subDiv.className = 'nav-afirmacion';
-            subDiv.innerText = `${subLabel}: ${sub.id || (sIndex + 1)}`;
-            compDiv.appendChild(subDiv);
-
-            sub.evidencias.forEach((ev, eIndex) => {
-                const evDiv = document.createElement('div');
-                evDiv.className = 'nav-evidencia';
-                evDiv.innerText = ev.definicion.substring(0, 60) + '...';
-                evDiv.onclick = () => renderizarDetalle(ev, comp.nombre, areaId);
-                compDiv.appendChild(evDiv);
+            af.evidencias.forEach(ev => {
+                const evItem = document.createElement('div');
+                evItem.className = 'evid-item';
+                evItem.innerText = ev.texto_icfes.substring(0, 90) + '...';
+                evItem.onclick = () => renderDetail(ev, comp.nombre, data.meta.color_primario);
+                compGroup.appendChild(evItem);
             });
         });
-        sidebar.appendChild(compDiv);
+        navTree.appendChild(compGroup);
     });
-
-    // 3. Agregar Botones Extra según el área
-    agregarBotonesExtra(areaId, sidebar);
 }
 
-function renderizarDetalle(evidencia, nombreComp, areaId) {
-    const container = document.getElementById('detail-view');
-    
-    // Marcar como activo en el menú
-    document.querySelectorAll('.nav-evidencia').forEach(el => el.classList.remove('active'));
+function renderDetail(ev, compNombre, color) {
+    // Marcar activo
+    document.querySelectorAll('.evid-item').forEach(i => i.classList.remove('active'));
     event.currentTarget.classList.add('active');
 
-    // Construir el HTML del detalle (Las "Tarjetas" que ya teníamos)
-    container.innerHTML = `
-        <div class="evidence-header" style="margin-bottom:30px; border-bottom: 3px solid var(--color-${areaId.split('_')[0]})">
-            <small style="text-transform:uppercase; color:#888;">${nombreComp}</small>
-            <h2 style="font-size:2rem; margin-top:10px;">${evidencia.definicion}</h2>
+    const target = document.getElementById('content-target');
+    const est = ev.estrategia_didactica;
+
+    target.innerHTML = `
+        <div class="icfes-box">
+            <span class="card-label" style="color:#64748b">Referente Técnico ICFES</span>
+            <h3>COMPETENCIA: ${compNombre}</h3>
+            <p><strong>Evidencia:</strong> ${ev.texto_icfes}</p>
         </div>
 
-        <div class="strategy-card objective">
-            <h3>Objetivo de Aprendizaje</h3>
-            <p>${evidencia.estrategia.objetivo}</p>
+        <h1 class="strategy-title">${est.nombre}</h1>
+        
+        <div class="card">
+            <span class="card-label">Objetivo Estratégico</span>
+            <p style="font-size: 1.3rem; margin:0;">${est.objetivo}</p>
         </div>
 
-        <div class="strategy-card sequence">
-            <h3>Secuencia Didáctica</h3>
-            <div class="phases">
-                ${evidencia.estrategia.fases.map(fase => `
-                    <div class="phase">
-                        <strong>${fase.paso}:</strong> ${fase.descripcion}
-                    </div>
-                `).join('')}
+        <div class="card">
+            <span class="card-label">Secuencia Metodológica</span>
+            <div class="phase-list">
+                ${est.fases_metodologicas.map((fase, idx) => {
+                    const [titulo, desc] = fase.split(':');
+                    return `
+                        <div class="phase-item">
+                            <div class="phase-number">${idx + 1}</div>
+                            <div>
+                                <strong>${titulo}:</strong> ${desc}
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
             </div>
         </div>
 
-        <div class="strategy-card tasks">
-            <h3>Tareas del Estudiante</h3>
-            <ul>
-                ${evidencia.estrategia.tareas_estudiante.map(tarea => `<li>${tarea}</li>`).join('')}
+        <div class="task-banner">
+            <span class="card-label" style="color: #c2410c">Tarea Retadora para el Estudiante</span>
+            <p style="font-size: 1.2rem; font-weight: 600; margin: 5px 0 0 0;">${est.tarea_retadora}</p>
+        </div>
+
+        <div class="card" style="margin-top:25px; background: #f1f5f9; border:none;">
+            <span class="card-label">Criterios de Evaluación (¿Qué observar?)</span>
+            <ul style="margin: 10px 0 0 0; padding-left: 20px;">
+                ${est.criterios_evaluacion.map(c => `<li style="margin-bottom:8px;">${c}</li>`).join('')}
             </ul>
         </div>
     `;
-}
-
-function agregarBotonesExtra(areaId, sidebar) {
-    const extraDiv = document.createElement('div');
-    extraDiv.className = 'extra-nav';
     
-    if (areaId === 'matematicas') {
-        extraDiv.innerHTML = `
-            <button class="btn-extra">📊 Contenidos Genéricos</button>
-            <button class="btn-extra">📐 Contenidos No Genéricos</button>
-            <button class="btn-extra">🏢 Contextos de Evaluación</button>
-        `;
-    } else if (areaId === 'ciencias_naturales') {
-        extraDiv.innerHTML = `
-            <button class="btn-extra">🧪 Componentes (Biol/Fís/Quím)</button>
-        `;
-    }
-    
-    if (extraDiv.innerHTML !== '') sidebar.appendChild(extraDiv);
+    // Scroll suave al inicio del contenido
+    document.querySelector('.main-viewer').scrollTop = 0;
 }
